@@ -1,0 +1,89 @@
+BODY{
+  margin:0;
+  font-family:Verdana, Arial, Helvetica, sans-serif;
+  font-size:11px;
+}
+
+H1{
+
+}
+
+A{
+  color:#339933;
+}
+
+DIV#contenedor{
+  margin:0 auto;
+}
+
+DIV#cabecera H1{
+  margin:0;
+  padding:0;
+  font-size:22px;
+  color:gray;
+}
+
+DIV#cabecera{
+  width:100%;
+  border:1px solid #cccccc;
+  padding:10px;
+  background-color:#EEEEEE;
+
+}
+
+DIV#contenido{
+  width: 600px;
+  padding:15px;
+  float:left;
+  border-left:1px solid #CCCCCC;
+}
+
+DIV#pie{
+  clear:both;
+  border-top:1px solid #CCCCCC;
+  text-align:center;
+  width: 100%;
+  background-color:#EEEEEE;
+  padding:5px;
+}
+
+TH{
+  background-color:#EEEEEE;
+  padding:0 3px 0 3px;
+}
+
+TD{
+  border-bottom:1px solid #CCCCCC;
+  border-right:1px solid #CCCCCC;
+  padding:2px;
+}
+
+label {
+  width: 60px;
+  display: block;
+  float: left;
+  text-align:left;
+}
+
+DIV#formbutton {
+  margin-left: 100px;
+}
+
+DIV#mensaje{
+  margin: 10px;
+  color:#FF0000;
+}
+DIV#boton_formulario{
+  width:205px;
+}
+DIV#boton_formulario INPUT{
+  float:left;
+}
+
+/*Capa para contrasetar los efectos de float y hacer de 'falso contenido' para que el menu opciones quede contenido en la capa noticia.*/
+.div-reset{
+    clear:both;
+    margin-bottom:1em;
+}
+/*fin reset*/
+
