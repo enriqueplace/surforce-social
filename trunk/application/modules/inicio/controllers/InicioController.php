@@ -9,7 +9,7 @@ class Inicio_InicioController extends Zend_Controller_Action {
     function preDispatch()
     {
     }
-    function inicioAction()
+    function indexAction()
     {
     }
     function agregarAction()
