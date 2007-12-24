@@ -1,0 +1,15 @@
+<?php echo $this->render('header.phtml'); ?>
+<div id="login-form">
+    <?php if(!empty($this->message)) :?>
+        <div id="mensaje"><?php echo $this->escape($this->message);?></div>
+    <?php endif; ?>
+		<p>Pagina de inicio de Surfroce - social</p>
+		<br/>
+ 		<div id="menu_modulo" style="width:95%;text-align:left;margin-left:100px; padding-top:10px;">
+			<a href="<?php echo $this->baseUrl ?>/registraciones/registraciones">Registrarse </a> | <a href="#">Olvide mi clave</a>
+		</div>
+
+	</div>
+</div>
+<?php echo $this->render('footer.phtml'); ?>
+
