@@ -42,6 +42,6 @@ try {
 } catch (Exception $e) {
     echo "Message: " . $e->getMessage() . "\n";
 }
-// Según la documentación, no se cierra el tag PHP en el index.php porque no se necesita y así
-// se previenen errores difíciles de encontrar como con la funcion header() si se deja un
+// Segun la documentacion, no se cierra el tag PHP en el index.php porque no se necesita y asi
+// se previenen errores dificiles de encontrar como con la funcion header() si se deja un
 // espacio en blanco al final.
