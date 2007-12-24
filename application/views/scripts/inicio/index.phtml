@@ -3,58 +3,66 @@
     <?php if(!empty($this->message)) :?>
         <div id="mensaje"><?php echo $this->escape($this->message);?></div>
     <?php endif; ?>
-		<p>Pagina de inicio de Surfroce - social</p>
+        <p>Pagina de inicio de Surforce - social</p>
 
-
-
-<div class="loginbox">¿Ya tienes una cuenta? <strong><a href="http://contakme.com/login.php" onclick="return modal_login()">Inicia Sesión</a></strong> o <a href="http://contakme.com/signup.php"><strong>Crea tu Cuenta Gratis</strong></a>.<br></div>
-
-
+    <div class="loginbox">ï¿½ tienes una cuenta
+        <strong><a href="<?php echo $this->baseUrl;?>/login/" onclick="return modal_login()">Inicia SesiÃ³n</a></strong> Ã³
+        <a href="<?php echo $this->baseUrl;?>/signup/"><strong>Crea tu Cuenta Gratis</strong></a>.<br>
+    </div>
 </div>
+
 <div id="main">
 
-<div class="menusections">
-<ul id="menu_pric_mem" class="menuoff_bg">
-<li><a href="#">Buscar Gente </a></li>
-<li><a href="#">Buscar Tags</a></li>
+    <div class="menusections">
+        <ul id="menu_pric_mem" class="menuoff_bg">
+            <li><a href="#">Buscar Gente </a></li>
+            <li><a href="#">Buscar Tags</a></li>
+        </ul>
+    </div>
 
-</ul>
-</div>
-<div class="submenu">
-<div id="menu_pric_mem_option_1" style="display: block;">
-  <input value="1" name="type" id="type" type="hidden">
-    <table>
-    <form name="search" id="search" action="search_results.php" method="get"></form>
-    <tbody><tr>
-      <td>
-        <select id="gender" name="gender">
-          	<option value="all" selected="selected">Todos</option>
-          	<option value="f">Chicas</option>
-        	<option value="m">Chicos</option>
-        </select>
+    <div class="submenu">
 
-        <select id="min_age" name="min_age">
-        	<option value="18" selected="selected">18</option>
-        </select>
-        <select id="max_age" name="max_age" class="input">
-        	<option value="18">18</option>
-        </select>
-        <select id="country" name="country" onchange="getStateListSearch(this)" style="width: 220px;">
-        	<option value="" selected="selected"> Cualquier País</option>
-       	</select>
-        <select name="statesearch" id="statesearch">
-            <option value="" selected="selected">Cualquier Región</option>
-        </select>
+        <div id="menu_pric_mem_option_1" style="display: block;">
 
-        <input id="pictures_only" name="pictures_only" value="1" checked="checked" type="checkbox">
-        <label for="pictures_only">Con fotos</label>
-        &nbsp;
-        <input name="Submit" value="Buscar" type="submit">
-      </td>
-    </tr>
+          <input value="1" name="type" id="type" type="hidden">
 
-  </tbody></table>
-</div>
+            <table>
+
+                <form name="search" id="search" action="search_results.php" method="get"></form>
+
+            <tbody><tr>
+              <td>
+                <select id="gender" name="gender">
+                    <option value="all" selected="selected">Todos</option>
+                    <option value="f">Chicas</option>
+                    <option value="m">Chicos</option>
+                </select>
+
+                <select id="min_age" name="min_age">
+                    <option value="18" selected="selected">18</option>
+                </select>
+
+                <select id="max_age" name="max_age" class="input">
+                    <option value="18">18</option>
+                </select>
+
+                <select id="country" name="country" onchange="getStateListSearch(this)" style="width: 220px;">
+                    <option value="" selected="selected"> Cualquier PaÃ­s</option>
+                </select>
+
+                <select name="statesearch" id="statesearch">
+                    <option value="" selected="selected">Cualquier RegiÃ³n</option>
+                </select>
+
+                <input id="pictures_only" name="pictures_only" value="1" checked="checked" type="checkbox">
+                <label for="pictures_only">Con fotos</label>
+                &nbsp;
+                <input name="Submit" value="Buscar" type="submit">
+              </td>
+            </tr>
+
+          </tbody></table>
+        </div>
 
 <div id="menu_pric_mem_option_2" style="display: none;">
 <input value="2" name="type" id="type" type="hidden">
@@ -62,7 +70,7 @@
   <form name="search_tags" id="search_tags" action="search_results.php" method="get"></form>
   <tbody><tr>
       <td>
-	    Buscar Tags: <input name="tags" value="" id="tags" size="35" type="text">
+        Buscar Tags: <input name="tags" value="" id="tags" size="35" type="text">
         <input name="Submit" value="Buscar" type="submit">
       </td>
       <td width="10"></td>
@@ -76,24 +84,29 @@
 <table>
   <tbody><tr>
     <td><div class="home_main">
-<div class="home_pics">
-	<a href="http://contakme.com/profile.php?u=chicohot3"><img src="http://contakme.com/contakme%200.03%20beta%20-%20%A1Crea%20tu%20propio%20perfil%21_files/458870994.txt" class="img10 img" title="Chico, 19 años de San Miguel de Tucuman Tucumán, Argentina" alt="Chico, 19 años de San Miguel de Tucuman Tucumán, Argentina"></a>
-</div>
+
+        <div class="home_pics">
+            <a href="/profile.php?u=chicohot3">
+                <img src="" class="img10 img"
+                title="Chico, 19 aÃ±os de San Miguel de Tucuman TucumÃ¡n, Argentina"
+                alt="Chico, 19 aÃ±os de San Miguel de Tucuman TucumÃ¡n, Argentina"></a>
+        </div>
 
 </div></td>
     <td><div class="home_welcome grey">
 
-<p><img src="contakme%200.03%20beta%20-%20%A1Crea%20tu%20propio%20perfil%21_files/home_main.gif"></p>
-<p>Ahora puedes formar parte de la red más interactiva de contactos online. Conoce a la gente que buscas y comunicate sin limites!</p>
+<p><img src="/home_main.gif"></p>
+<p>Ahora puedes formar parte de la red mÃ¡s interactiva de contactos online. Conoce a la gente que buscas y comunicate sin limites!</p>
 <ul>
 <li>Contacta amigos y chatea</li>
 <li>Crea albums de fotos y videos</li>
 <li>Cuenta tus experiencias y comenta</li>
 <li>Vota y haz que te voten</li>
-<li>Más fácil que nunca!</li>
+<li>MÃ¡s fÃ¡cil que nunca!</li>
 </ul>
 
-<p><a href="http://contakme.com/signup.php"><img src="contakme%200.03%20beta%20-%20%A1Crea%20tu%20propio%20perfil%21_files/home_button_create.gif" border="0"></a></p>
+<p><a href="/signup.php">
+    <img src="/home_button_create.gif" border="0"></a></p>
 </div>
 
 </td>
@@ -106,7 +119,8 @@
 <div class="profile_title">nuevas fotos subidas</div>
 
 <div class="">
-<a href="http://contakme.com/image.php?img=375247061"><img src="contakme%200.03%20beta%20-%20%A1Crea%20tu%20propio%20perfil%21_files/375247061.txt" class="img10 img"></a>
+<a href="/image.php?img=375247061">
+    <img src="/375247061.txt" class="img10 img"></a>
 </div>
 
 <?php echo $this->render('footer.phtml'); ?>
