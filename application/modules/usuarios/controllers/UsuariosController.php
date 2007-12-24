@@ -10,16 +10,16 @@ class Usuarios_UsuariosController extends Zend_Controller_Action
     function indexAction()
     {
     }
-    function agregarAction()
+    function addAction()
     {
     }
-    function modificarAction()
+    function uptadteAction()
     {
     }
-    function eliminarAction()
+    function deleteAction()
     {
     }
-    function verAction()
+    function viewAction()
     {
     }
 }
