@@ -3,7 +3,6 @@
     <?php if(!empty($this->message)) :?>
         <div id="mensaje"><?php echo $this->escape($this->message);?></div>
     <?php endif; ?>
-
     <div class="loginbox">ï¿½ tienes una cuenta
         <strong><a href="<?php echo $this->baseUrl;?>/login/login/" onclick="return modal_login()">Inicia SesiÃ³n</a></strong> Ã³
         <a href="<?php echo $this->baseUrl;?>/registracion/registracion/"><strong>Crea tu Cuenta Gratis</strong></a>.<br>
@@ -80,47 +79,41 @@
 </div>
 <div class="separator"></div>
 
-<table>
+    <h1>Login:</h1>
+
+
+
+    <table>
+	<form action="login_check.php" method="post"></form>
   <tbody><tr>
-    <td><div class="home_main">
+    <td>Correo electrónico:</td>
 
-        <div class="home_pics">
-            <a href="/profile.php?u=chicohot3">
-                <img src="" class="img10 img"
-                title="Chico, 19 aÃ±os de San Miguel de Tucuman TucumÃ¡n, Argentina"
-                alt="Chico, 19 aÃ±os de San Miguel de Tucuman TucumÃ¡n, Argentina"></a>
-        </div>
-
-</div></td>
-    <td><div class="home_welcome grey">
-
-<p><img src="/home_main.gif"></p>
-<p>Ahora puedes formar parte de la red mÃ¡s interactiva de contactos online. Conoce a la gente que buscas y comunicate sin limites!</p>
-<ul>
-<li>Contacta amigos y chatea</li>
-<li>Crea albums de fotos y videos</li>
-<li>Cuenta tus experiencias y comenta</li>
-<li>Vota y haz que te voten</li>
-<li>MÃ¡s fÃ¡cil que nunca!</li>
-</ul>
-
-<p><a href="/signup.php">
-    <img src="/home_button_create.gif" border="0"></a></p>
-</div>
-
-</td>
+    <td><label>
+      <input name="email" id="email" size="30" type="text">
+    </label></td>
   </tr>
+  <tr>
+    <td>Contraseña:</td>
+    <td><input name="password" id="password" value="" size="15" type="password"></td>
+  </tr>
+
+  <tr>
+    <td>Recordar Contraseña:</td>
+    <td><input name="cookie_want_set" id="cookie_want_set" value="yes" type="checkbox"></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><label>
+      <input name="Submit" value="Iniciar Sesión" type="submit">
+
+    </label></td>
+  </tr>
+
 </tbody></table>
 
+ <p><a href="<?php echo $this->baseUrl;?>/forgotPass/forgotPass/">¿Olvidaste tu contraseña?</a></p>
+ <p>¿Ya tienes una cuenta? <strong><a href="<?php echo $this->baseUrl;?>/login/login/">Inicia Sesión</a></strong> o <a href="<?php echo $this->baseUrl;?>/registracion/registracion/"><strong>Crea tu Cuenta Gratis</strong></a>.</p>
 
-<div class="sep"></div>
-
-<div class="profile_title">nuevas fotos subidas</div>
-
-<div class="">
-<a href="/image.php?img=375247061">
-    <img src="/375247061.txt" class="img10 img"></a>
-</div>
 
 <?php echo $this->render('footer.phtml'); ?>
 
