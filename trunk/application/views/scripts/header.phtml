@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="<?php echo $this->baseUrl;?>/public/styles/site.css" />
 
     <?php if( $this->scriptJs == 'prototype' ) :?>
-		<script src="<?php echo $this->baseUrl;?>/public/scripts/prototype/prototype.js" type="text/javascript"></script>
+        <script src="<?php echo $this->baseUrl;?>/public/scripts/prototype/prototype.js" type="text/javascript"></script>
     <?php endif; ?>
 
     <?php if( $this->scriptJs == 'scriptaculous' ) :?>
@@ -29,7 +29,7 @@
     <div id="contenedor">
 
     <div id="cabecera">
-		<a href="/index.php"><img src="http://www.surforce.com/surforce.jpg" alt="surforce" border="0" title="surforce" /></a>
+        <a href="/index.php">surforce-social</a>
         <?php if( $this->user ) echo "usuario: ".$this->escape($this->user->usuario);?>
     </div>
 
