@@ -20,7 +20,6 @@ class Autenticacion_AutenticacionController extends Zend_Controller_Action {
         $info = Zend_Registry::get('personalizacion');
         $this->view->message = '';
         if ($this->_request->isPost()) {
-
             Zend_Loader::loadClass('Zend_Filter_StripTags');
             $f = new Zend_Filter_StripTags();
             $usuario = $f->filter($this->_request->getPost('usuario'));
@@ -28,7 +27,8 @@ class Autenticacion_AutenticacionController extends Zend_Controller_Action {
 
             if (empty($usuario)) {
                 $this->view->message = $info->sitio->autenticacion->login->msgNombreVacio;
-            } else {
+            }
+            else {
 
                 Zend_Loader::loadClass('Zend_Auth_Adapter_DbTable');
                 $dbAdapter = Zend_Registry::get('dbAdapter');
@@ -47,7 +47,8 @@ class Autenticacion_AutenticacionController extends Zend_Controller_Action {
                     $data = $autAdapter->getResultRowObject(null, 'password');
                     $aut->getStorage()->write($data);
                     $this->_redirect('/');
-                } else {
+                }
+                else {
                     $this->view->message = $info->sitio->autenticacion->login->msgUserPassIncorrectos;
                 }
             }

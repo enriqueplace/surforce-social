@@ -1,28 +1,16 @@
 <?php
 class Login_LoginController extends Zend_Controller_Action {
-    function init()
-    {
-        $this->initView();
+	function indexAction() {
+		$this->initView();
         $this->view->baseUrl = $this->_request->getBaseUrl();
-        $this->view->setScriptPath('./application/views/scripts/');
-    }
-    function preDispatch()
-    {
-    }
-    function indexAction()
-    {
-    }
-    function agregarAction()
-    {
-    }
-    function modificarAction()
-    {
-    }
-    function eliminarAction()
-    {
-    }
-    function verAction()
-    {
-    }
+	 	$this->view->setScriptPath('./application/views/scripts/');
+	}
+	function doLoginAction() {
+		// check inputs and return
+		// validation error or new url
+	}
+	function successAction() {
+		echo 'Congratulations! You are in.';
+	}
 }
 ?>
