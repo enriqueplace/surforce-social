@@ -70,11 +70,13 @@
 
     <div id="login">
         <?php if($this->user) : ?>
-            <p id="logueado">Usuario logueado como <?php echo $this->escape($this->user->nombre) . " " . $this->escape($this->user->apellido);?>
+            <p id="logueado">Usuario logueado como <?php echo $this->escape($this->user->nombre) . " " . $this->escape($this->user->apellido);?></p>
             <br/><br/>
-            <a href="<?php echo $this->baseUrl ?>/autenticacion/autenticacion/logout">[Cerrar sesión]</a></p>
+            <p><a href="<?php echo $this->baseUrl ?>/autenticacion/autenticacion/logout">[Cerrar sesiÃ³n]</a></p>
         <?php else : ?>
-            <a href="<?php echo $this->baseUrl ?>/autenticacion/autenticacion/login">[Iniciar sesión]</a></p>
+            <p><a href="<?php echo $this->baseUrl ?>/autenticacion/autenticacion/login">[Iniciar sesiÃ³n]</a><br/>
+            <a href="<?php echo $this->baseUrl ?>/registracion/registracion/">[Registrate Gratis!]</a><br/>
+            <a href="<?php echo $this->baseUrl ?>/forgotPass/forgotPass/">[Perdi mi password]</a></p>
         <?php endif; ?>
     </div>
 </div>

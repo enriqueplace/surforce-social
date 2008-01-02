@@ -1,0 +1,269 @@
+<h2><?php echo $this->escape($this->subtitle); ?></h2>
+
+<script type="text/javascript" src="signup.php_files/getcities.js"></script>
+
+<form name="signup" action="<?php echo $this->baseUrl;?>/registracion/registracion/add" method="post" onsubmit="return check_form_s(this);">
+<input name="check" id="check" value="ok" type="hidden">
+<input name="user_lang" id="user_lang" value="es" type="hidden">
+
+<table class="signup">
+  <tbody>
+
+  <tr>
+    <td>Elige un Usuario: </td>
+    <td>
+    	<input name="usuario" class="input" id="usuario" onblur="verifyusuario(signup);" value="<?php echo $this->escape($this->registracion->usuario);?>" size="33" maxlength="32" type="text">
+    	<div class="error" id="form_usuario_error"></div>
+    </td>
+  </tr>
+
+  <tr>
+    <td>Elige una Contrase&ntilde;a: </td>
+    <td>
+    	<input name="password" class="input" id="password" onblur="verifyPassword(signup);" value="<?php echo $this->escape($this->registracion->password);?>" size="15" maxlength="32" type="password">
+    	<div class="error" id="form_password_error"></div>
+    </td>
+  </tr>
+
+  <tr>
+    <td>Repite tu Contrase&ntilde;a: </td>
+    <td>
+    	<input name="password2" class="input" id="password2" onblur="verifyPassword2(signup);" value="<?php echo $this->escape($this->registracion->password);?>" size="15" maxlength="32" type="password">
+    	<div id="form_password2_error"></div>
+    </td>
+  </tr>
+
+  <tr>
+  	<td>Tu Correo Electr&oacute;nico </td>
+    <td>
+    	<input name="mail" class="input" id="mail" onblur="verifymail(signup);" value="<?php echo $this->escape($this->registracion->mail);?>" size="64" maxlength="64" type="text">
+    	<div class="error" id="form_mail_error"></div>
+    </td>
+
+  </tr>
+
+  <tr>
+    <td>Tu Nombre:</td>
+    <td>
+      	<input name="nombre" class="input" id="nombre" onblur="verifyNombre(signup);" value="<?php echo $this->escape($this->registracion->nombre);?>" size="40" maxlength="40" type="text">
+   		<div class="error" id="form_nombre_error"></div>
+   	</td>
+  </tr>
+
+  <tr>
+    <td>Tu Sexo:</td>
+    <td>
+	  <select name="gender" id="genero" class="input">
+	  	<option <?php	if($this->escape($this->registracion->genero=='Hombre')){	echo 'selected="selected"';	} 	?> value="Hombre">Chico</option>
+		<option <?php	if($this->escape($this->registracion->genero=='Mujer')){ 	echo 'selected="selected"';	}	?> value="Mujer">Chica</option>
+      </select>
+    </label><div id="form_genero_error"></div></td>
+  </tr>
+
+  <tr>
+    <td>Tu Pa&iacute;s:</td>
+    <td>
+		<select id="idPais" name="idPais" onchange="getStateList(this,null)" class="input">
+	    	<option value="">Cualquier Pa&iacute;s</option>
+	        <option <?php	if($this->escape($this->registracion->idPais=='AF')){ 	echo 'selected="selected"';	}	?>   value="AF">Afganistan</option>
+	    </select>
+	    <div id="form_country_error"></div>
+	</td>
+  </tr>
+
+  <tr>
+    <td>Tu Estado:</td>
+    <td>
+    	<select name="idEstado" id="idEstado" class="input">
+    		<option  <?php	if($this->escape($this->registracion->idEstado=='Adygeya')){ 	echo 'selected="selected"';	}	?>   value="Adygeya">Adygeya</option>
+    	</select>
+    	<div id="form_idEstado_error"></div>
+   	</td>
+  </tr>
+
+  <tr>
+    <td>Tu Ciudad:</td>
+    <td>
+    	<input name="ciudad" class="input" id="ciudad" onblur="verifyciudad(signup);" size="40" maxlength="40" value="<?php echo $this->escape($this->registracion->ciudad);?>" type="text">
+    	<div id="form_ciudad_error"></div>
+    </td>
+  </tr>
+
+  <tr>
+    <td>Fecha de Nacimiento:</td>
+	<td><select name="day" id="day" class="input">
+	  	<?php
+	  	for($i=1;$i<=31;$i++){
+	  		$day	=	($i<10?"0$i":$i);
+			echo	"<option ";
+			if($this->escape($this->registracion->day==$day)){
+				echo 'selected="selected"';
+			}
+			echo "value=\"$day\">$day</option>\n";
+	  	}
+	  	?>
+      </select>
+
+	  <select name="month" id="month" class="input">
+	    <option value="">Mes</option>
+		<option <?php	if($this->escape($this->registracion->month=='01')){ 	echo 'selected="selected"';	}	?> value="01">Enero</option>
+	    <option <?php	if($this->escape($this->registracion->month=='02')){ 	echo 'selected="selected"';	}	?> value="02">Febrero</option>
+	    <option <?php	if($this->escape($this->registracion->month=='03')){ 	echo 'selected="selected"';	}	?> value="03">Marzo</option>
+	    <option <?php	if($this->escape($this->registracion->month=='04')){ 	echo 'selected="selected"';	}	?> value="04">Abril</option>
+	    <option <?php	if($this->escape($this->registracion->month=='05')){ 	echo 'selected="selected"';	}	?> value="05">Mayo</option>
+	    <option <?php	if($this->escape($this->registracion->month=='06')){ 	echo 'selected="selected"';	}	?> value="06">Junio</option>
+	    <option <?php	if($this->escape($this->registracion->month=='07')){ 	echo 'selected="selected"';	}	?> value="07">Julio</option>
+	    <option <?php	if($this->escape($this->registracion->month=='08')){ 	echo 'selected="selected"';	}	?> value="08">Agosto</option>
+	    <option <?php	if($this->escape($this->registracion->month=='09')){ 	echo 'selected="selected"';	}	?> value="09">Setiembre</option>
+	    <option <?php	if($this->escape($this->registracion->month=='10')){ 	echo 'selected="selected"';	}	?> value="10">Octubre</option>
+	    <option <?php	if($this->escape($this->registracion->month=='11')){ 	echo 'selected="selected"';	}	?> value="11">Noviembre</option>
+	    <option <?php	if($this->escape($this->registracion->month=='12')){ 	echo 'selected="selected"';	}	?> value="12">Diciembre</option>
+      </select>
+
+	  <select name="year" id="year" class="input">
+	  	<option value="">A&ntilde;o</option>
+	  	<?php
+	  	for($i=1928;$i<(date("Y")-5);$i++){
+			echo	"<option ";
+			if($this->escape($this->registracion->year==$i)){
+				echo 'selected="selected"';
+			}
+			echo "value=\"$i\">$i</option>\n";
+	  	}
+	  	?>
+	  </select></td>
+  </tr>
+
+  <tr>
+    <td>&nbsp;</td>
+    <td><input name="terms" id="terms" type="checkbox"> <a href="http://contakme.com/terms.php" target="_blank">Acepto los teminos</a></td>
+  </tr>
+
+  <tr>
+    <td>&nbsp;</td>
+
+	<td><label>
+      <input name="Submit" value="Crear mi cuenta!" type="submit">
+
+    </label></td>
+  </tr>
+
+</tbody>
+
+</table>
+
+<script language="javascript">
+window.onload=getStateList(document.getElementById("idPais"),'null');
+</script>
+<script language="javascript">
+<!--
+
+function verifyusuario(signup) {
+	checkusuario = signup.usuario.value
+
+	if (checkusuario.length < 2){
+		form_usuario_error_var = document.getElementById("form_usuario_error");
+		form_usuario_error_var.innerHTML = "Por favor, escribe tu usuario.";
+		form_usuario_error_var.setAttribute("class","error")
+
+		// signup.name.select();
+		return false;
+	}
+	else {
+		form_usuario_error_var = document.getElementById("form_usuario_error");
+		form_usuario_error_var.innerHTML = "";
+	}
+}
+
+
+function verifyPassword(signup) {
+	checkPassword = signup.password.value
+	if (checkPassword.length < 2){
+		form_password_error_var = document.getElementById("form_password_error");
+		form_password_error_var.innerHTML = "Por favor, escribe tu contrase&ntilde;a.";
+		form_password_error_var.setAttribute("class","error")
+		// signup.password.select();
+		return false;
+	}
+	else {
+		form_password_error_var = document.getElementById("form_password_error");
+		form_password_error_var.innerHTML = "";
+	}
+}
+
+function verifyPassword2(signup) {
+	checkPassword2 = signup.password2.value
+	if (signup.password.value !=  signup.password2.value){
+		form_password2_error_var = document.getElementById("form_password2_error");
+		form_password2_error_var.innerHTML = "Las contrase&ntilde;as ingresadas no concuerdan.";
+		form_password2_error_var.setAttribute("class","error")
+		//	signup.password2.select();
+		return false;
+	}
+	else {
+		form_password2_error_var = document.getElementById("form_password2_error");
+		form_password2_error_var.innerHTML = "";
+	}
+}
+
+
+function verifymail(signup) {
+	checkmail = signup.mail.value
+	if ((checkmail.indexOf('@') < 0) || ((checkmail.charAt(checkmail.length-4) != '.') && (checkmail.charAt(checkmail.length-3) != '.'))){
+		form_mail_error_var = document.getElementById("form_mail_error");
+		form_mail_error_var.innerHTML = "Por favor escribe una direccion de correo valida.";
+		form_mail_error_var.setAttribute("class","error")
+		// signup.mail.select();
+		return false;
+	}
+	else {
+		form_mail_error_var = document.getElementById("form_mail_error");
+		form_mail_error_var.innerHTML = "";
+	}
+}
+
+function verifyNombre(signup) {
+	checkName = signup.nombre.value
+	if (checkName.length < 2){
+		form_nombre_error_var = document.getElementById("form_nombre_error");
+		form_nombre_error_var.innerHTML = "";
+		form_nombre_error_var.setAttribute("class","error")
+		// signup.nombre.select();
+		return false;
+	}
+	else {
+		form_nombre_error_var = document.getElementById("form_nombre_error");
+		form_nombre_error_var.innerHTML = "";
+	}
+}
+
+function verifyciudad(signup) {
+	checkciudad = signup.ciudad.value
+	if (checkciudad.length < 2){}
+		form_ciudad_error_var = document.getElementById("form_ciudad_error");
+		form_ciudad_error_var.innerHTML = "Por favor, escribe tu ciudad.";
+		form_ciudad_error_var.setAttribute("class","error")
+		// signup.name.select();
+		return false;
+	}
+	else {
+		form_ciudad_error_var = document.getElementById("form_ciudad_error");
+		form_ciudad_error_var.innerHTML = "";
+	}
+}
+
+function check_terms(objform)	{
+	if (objform.terms.checked == false){
+		alert("Debes aceptar los terminos del contrato antes de continuar");
+		objform.terms.focus();
+		return false;
+	}else{
+		return true;
+	}
+}
+
+function check_form_s(objForm){
+	return check_terms(objForm);
+}
+-->
+</script>

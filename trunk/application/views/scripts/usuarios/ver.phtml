@@ -6,15 +6,15 @@
     <?php if ($this->usuarioLogueado): ?>
     <table>
         <tr>
-            <td><a href="<?php echo $this->baseUrl; ?>/usuarios/usuarios/modificar/id/<?php echo $this->usuario->id;?>">Modificar</a></td>
-            <td><a href="<?php echo $this->baseUrl; ?>/usuarios/usuarios/eliminar/id/<?php echo $this->usuario->id;?>">Eliminar</a></td>
+            <td><a href="<?php echo $this->baseUrl; ?>/usuarios/usuarios/modificar/idUsuario/<?php echo $this->usuario->idUsuario;?>">Modificar</a></td>
+            <td><a href="<?php echo $this->baseUrl; ?>/usuarios/usuarios/eliminar/idUsuario/<?php echo $this->usuario->idUsuario;?>">Eliminar</a></td>
         </tr>
     </table>
     <?php endif; ?>
 
     <div>
         <label for="usuario">Id:&nbsp;</label>
-        <?php echo $this->escape(trim($this->usuario->id));?>
+        <?php echo $this->escape(trim($this->usuario->idUsuario));?>
     </div>
     <div>
         <label for="usuario">Usuario:&nbsp;</label>

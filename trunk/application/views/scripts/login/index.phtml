@@ -1,120 +1,39 @@
-<?php echo $this->render('header.phtml'); ?>
-<div id="login-form">
-    <?php if(!empty($this->message)) :?>
-        <div id="mensaje"><?php echo $this->escape($this->message);?></div>
-    <?php endif; ?>
-    <div class="loginbox">� tienes una cuenta
-        <strong><a href="<?php echo $this->baseUrl;?>/login/login/" onclick="return modal_login()">Inicia Sesión</a></strong> ó
-        <a href="<?php echo $this->baseUrl;?>/registracion/registracion/"><strong>Crea tu Cuenta Gratis</strong></a>.<br>
-    </div>
-</div>
-
-<div id="main">
-
-    <div class="menusections">
-        <ul id="menu_pric_mem" class="menuoff_bg">
-            <li><a href="#">Buscar Gente </a></li>
-            <li><a href="#">Buscar Tags</a></li>
-        </ul>
-    </div>
-
-    <div class="submenu">
-
-        <div id="menu_pric_mem_option_1" style="display: block;">
-
-          <input value="1" name="type" id="type" type="hidden">
-
-            <table>
-
-                <form name="search" id="search" action="search_results.php" method="get"></form>
-
-            <tbody><tr>
-              <td>
-                <select id="gender" name="gender">
-                    <option value="all" selected="selected">Todos</option>
-                    <option value="f">Chicas</option>
-                    <option value="m">Chicos</option>
-                </select>
-
-                <select id="min_age" name="min_age">
-                    <option value="18" selected="selected">18</option>
-                </select>
-
-                <select id="max_age" name="max_age" class="input">
-                    <option value="18">18</option>
-                </select>
-
-                <select id="country" name="country" onchange="getStateListSearch(this)" style="width: 220px;">
-                    <option value="" selected="selected"> Cualquier País</option>
-                </select>
-
-                <select name="statesearch" id="statesearch">
-                    <option value="" selected="selected">Cualquier Región</option>
-                </select>
-
-                <input id="pictures_only" name="pictures_only" value="1" checked="checked" type="checkbox">
-                <label for="pictures_only">Con fotos</label>
-                &nbsp;
-                <input name="Submit" value="Buscar" type="submit">
-              </td>
-            </tr>
-
-          </tbody></table>
-        </div>
-
-<div id="menu_pric_mem_option_2" style="display: none;">
-<input value="2" name="type" id="type" type="hidden">
-    <table>
-  <form name="search_tags" id="search_tags" action="search_results.php" method="get"></form>
-  <tbody><tr>
-      <td>
-        Buscar Tags: <input name="tags" value="" id="tags" size="35" type="text">
-        <input name="Submit" value="Buscar" type="submit">
-      </td>
-      <td width="10"></td>
-      <td></td>
-    </tr>
-  </tbody></table>
-  </div>
-</div>
-<div class="separator"></div>
-
-    <h1>Login:</h1>
-
-
-
-    <table>
-	<form action="login_check.php" method="post"></form>
-  <tbody><tr>
-    <td>Correo electrónico:</td>
-
-    <td><label>
-      <input name="email" id="email" size="30" type="text">
-    </label></td>
-  </tr>
-  <tr>
-    <td>Contrase�a:</td>
-    <td><input name="password" id="password" value="" size="15" type="password"></td>
-  </tr>
-
-  <tr>
-    <td>Recordar Contraseña:</td>
-    <td><input name="cookie_want_set" id="cookie_want_set" value="yes" type="checkbox"></td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td><label>
-      <input name="Submit" value="Iniciar Sesi�n" type="submit">
-
-    </label></td>
-  </tr>
-
-</tbody></table>
-
- <p><a href="<?php echo $this->baseUrl;?>/forgotPass/forgotPass/">�Olvidaste tu contrase�a?</a></p>
- <p>�Ya tienes una cuenta? <strong><a href="<?php echo $this->baseUrl;?>/login/login/">Inicia Sesión</a></strong> o
- 	<a href="<?php echo $this->baseUrl;?>/registracion/registracion/"><strong>Crea tu Cuenta Gratis</strong></a>.</p>
-
-
-<?php echo $this->render('footer.phtml'); ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<title>Login page</title>
+<!-- Dojo toolkit flags -->
+<script type="text/javascript">djConfig = { isDebug: false };</script>
+<!-- Dojo toolkit main include -->
+<script type="text/javascript" src="~/libs/dojo/dojo.js"></script>
+<!-- Include nessecary Dojo packages -->
+<script type="text/javascript">dojo.require("dojo.io.*");</script>
+<script type="text/javascript">
+	/**
+	* Executes login server action and shows
+	* a result or performs a redirect.
+	*/
+	function login(srcElement) {
+	// send an ajax request to the server
+	// cancel event
+	return false;
+	}
+</script>
+</head>
+<body>
+	<form>
+		<h1>Login</h1>
+		<table>
+			<tr>
+				<td>Login:</td>
+				<td><input id="login" /></td>
+			</tr>
+			<tr>
+				<td>Password:</td>
+				<td><input id="password" /></td>
+			</tr>
+		</table>
+		<button onclick="login(this);">Login</button>
+	</form>
+</body>
 

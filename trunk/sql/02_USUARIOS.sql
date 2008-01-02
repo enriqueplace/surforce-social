@@ -1,10 +1,11 @@
+
 # Table "usuarios" DDL
 
 CREATE TABLE `usuarios` (
   `idUsuario` mediumint(10) unsigned NOT NULL auto_increment,
   `idZona` mediumint(10) NOT NULL,
   `usuario` varchar(32) character set utf8 collate utf8_spanish_ci NOT NULL,
-  `clave` varchar(32) NOT NULL,
+  `password` varchar(32) NOT NULL,
   `nombre` varchar(40) character set utf8 collate utf8_spanish_ci NOT NULL,
   `apellido` varchar(40) character set utf8 collate utf8_spanish_ci NOT NULL,
   `mail` varchar(64) NOT NULL,
@@ -17,7 +18,7 @@ CREATE TABLE `usuarios` (
   PRIMARY KEY  (`idUsuario`),
   UNIQUE KEY `usuario_idx` (`usuario`),
   KEY `zona_idx` (`idZona`),
-  KEY `pass_idx` (`clave`),
+  KEY `pass_idx` (`password`),
   KEY `nacimiento_idx` (`fechaNacimiento`),
   KEY `estado_idx` (`estado`)
-) ENGINE=MyISAM
+) ENGINE=MyISAM;

@@ -1,33 +1,26 @@
 <?php echo $this->render('header.phtml'); ?>
+
 <div id="login-form">
     <?php if(!empty($this->message)) :?>
-        <div id="mensaje"><?php echo $this->escape($this->message);?></div>
+        <div id="mensaje">
+            <?php echo $this->escape($this->message);?>
+        </div>
     <?php endif; ?>
 
-        <br/>
-        <div id="login-form" style="width:300px;margin-left:100px;margin-right:100px;margin-top: 20px; padding:10px;border: 1px solid;">
-            <form id="form-login" action="<?php echo $this->baseUrl ?>/autenticacion/autenticacion/login" method="post">
-                   <div>
-                    <label for="usuario">Usuario: </label>
-                    <input type="text" id="usuario" name="usuario" value=""/>
-                   </div>
-                <br/>
-                <div>
-                    <label for="password">Clave: </label>
-                    <input type="password" id="password" name="password" value=""/>
-                </div>
-                <br/>
-                <div id="formbutton">
-                    <input type="submit" name="login" value="Iniciar Sesión" onclick="login_validar();" />
-                </div>
-            </form>
-        </div>
-         <div id="menu_modulo" style="width:95%;text-align:left;margin-left:100px; padding-top:10px;">
-            <a href="<?php echo $this->baseUrl ?>/registraciones/registraciones">Registrarse </a> | <a href="#">Olvidé mi clave</a>
+    <form id="form-login" action="<?php echo $this->baseUrl ?>/autenticacion/autenticacion/login" method="post">
+
+        <div>
+            <label for="usuario">Usuario: </label>
+            <input type="text" id="usuario" name="usuario" value=""/>
         </div>
 
-    </div>
+        <div>
+            <label for="password">Clave: </label>
+            <input type="password" id="password" name="password" value=""/>
+        </div>
+
+        <div id="formbutton">
+            <input type="submit" name="login" value="Iniciar Sesión" onclick="login_validar();" />
+        </div>
+    </form>
 </div>
-</body>
-</html>
-

@@ -18174,7 +18174,7 @@ VALUES
 INSERT INTO zonas
   (idZona, idPadre, nombre, estado)
 VALUES
-  (3634, 164, " Ile d' Ol‚ron", 1);
+  (3634, 164, " Ile d' Olâ€šron", 1);
 
 INSERT INTO zonas
   (idZona, idPadre, nombre, estado)

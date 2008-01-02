@@ -8,7 +8,7 @@
   <form action="<?php echo $this->baseUrl ?>/usuarios/usuarios/eliminar" method="post">
     <p>¿Esta seguro que quiere eliminar el usuario '<?php echo $this->escape($this->usuario->usuario); ?>'?</p>
     <div id="boton_formulario">
-      <input type="hidden" name="id" value="<?php echo $this->usuario->id; ?>" />
+      <input type="hidden" name="idUsuario" value="<?php echo $this->usuario->idUsuario; ?>" />
       <input type="submit" name="del" value="Si" />
       <input type="submit" name="del" value="No" />
     </div>
