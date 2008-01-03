@@ -1,0 +1,9 @@
+<?php
+$array_vars = array();
+foreach ($this->varsJson as $ciudades){
+	array_push($array_vars, array('nombre'=>$ciudades->nombre, 'idZona'=>$ciudades->idZona));
+	
+}
+$varsJson = Zend_Json::encode($array_vars);
+echo $varsJson;
+?>

@@ -18,13 +18,17 @@ class Autenticacion_AutenticacionController extends Zend_Controller_Action {
 
     function loginAction(){
         $info = Zend_Registry::get('personalizacion');
-        $this->view->message = '';
+        $this->view->message 				= '';
+        $this->view->msgNombreVacio 		= $info->sitio->autenticacion->login->msgNombreVacio;
+        $this->view->msgPasswordVacio 		= $info->sitio->autenticacion->login->msgPasswordVacio;
+        $this->view->msgUserPassIncorrectos = $info->sitio->autenticacion->login->msgUserPassIncorrectos;
+        $tplJson = null;
         if ($this->_request->isPost()) {
             Zend_Loader::loadClass('Zend_Filter_StripTags');
             $f = new Zend_Filter_StripTags();
             $usuario = $f->filter($this->_request->getPost('usuario'));
             $password = $f->filter($this->_request->getPost('password'));
-
+			$verificado = $f->filter($this->_request->getPost('verificado'));
             if (empty($usuario)) {
                 $this->view->message = $info->sitio->autenticacion->login->msgNombreVacio;
             }
@@ -42,21 +46,23 @@ class Autenticacion_AutenticacionController extends Zend_Controller_Action {
 
                 $aut = Zend_Auth::getInstance();
                 $result = $aut->authenticate($autAdapter);
-
                 if ($result->isValid()) {
                     $data = $autAdapter->getResultRowObject(null, 'password');
                     $aut->getStorage()->write($data);
                     $this->_redirect('/');
                 }
                 else {
-                    $this->view->message = $info->sitio->autenticacion->login->msgUserPassIncorrectos;
+                	Zend_Loader::loadClass('Zend_Json');
+                	$this->view->varsJson = array('verificado'=> $result->isValid());
+                	$tplJson='autentificacion';
                 }
             }
         }
-
-        $this->view->title = $info->sitio->autenticacion->login->titulo;
+		
+        
+        $this->view->title 					= $info->sitio->autenticacion->login->titulo;
         $this->view->scriptJs = "scriptaculous";
-        $this->render();
+        $this->render($tplJson);
 
     }
 

@@ -46,6 +46,7 @@
     <td>Tu Sexo:</td>
     <td>
 	  <select name="gender" id="genero" class="input">
+	  	<option value="">...</option>
 	  	<option <?php	if($this->escape($this->registracion->genero=='Hombre')){	echo 'selected="selected"';	} 	?> value="Hombre">Chico</option>
 		<option <?php	if($this->escape($this->registracion->genero=='Mujer')){ 	echo 'selected="selected"';	}	?> value="Mujer">Chica</option>
       </select>
@@ -55,9 +56,11 @@
   <tr>
     <td>Tu Pa&iacute;s:</td>
     <td>
-		<select id="idPais" name="idPais" class="input">
-	    	<option value="">Cualquier Pa&iacute;s</option>
-	        <option <?php	if($this->escape($this->registracion->idPais=='AF')){ 	echo 'selected="selected"';	}	?>   value="AF">Afganistan</option>
+		<select id="idPais" name="idPais" class="input" >
+	    	<option value="">...</option>	   
+	        <?php foreach ($this->zonas as $zona): ?>
+	        	<option <?php	if($this->escape($this->registracion->idPais==$zona->idZona )){ 	echo 'selected="selected"';	}	?> value="<?php echo $zona->idZona ?>"><?php echo $zona->nombre ?></option>
+	        <?php endforeach; ?>
 	    </select>
 	</td>
   </tr>
@@ -66,6 +69,7 @@
     <td>Tu Estado:</td>
     <td>
     	<select name="idEstado" id="idEstado" class="input">
+    		<option value="">...</option>
     		<option  <?php	if($this->escape($this->registracion->idEstado=='Adygeya')){ 	echo 'selected="selected"';	}	?>   value="Adygeya">Adygeya</option>
     	</select>
    	</td>
@@ -95,7 +99,7 @@
 	  	?>
       </select>
 
-	  <select name="month" id="month" class="input">
+	  <select name="month" id="month" class="input" >
 	    <option value="">Mes</option>
 		<option <?php	if($this->escape($this->registracion->month=='01')){ 	echo 'selected="selected"';	}	?> value="01">Enero</option>
 	    <option <?php	if($this->escape($this->registracion->month=='02')){ 	echo 'selected="selected"';	}	?> value="02">Febrero</option>
@@ -143,6 +147,10 @@
 
 </table>
 <script type="text/javascript">
+	/*function getCiudades
+	* @idPais = id del país para poder sacar sus ciudades
+	*/
+	
 	//	validamos que el usuario exista
 	var usuario = new LiveValidation('usuario');
 	usuario.add(Validate.Presence);
@@ -163,6 +171,11 @@
 
 	var idPais	= new LiveValidation('idPais');
 	idPais.add(Validate.Presence);
+	Event.observe($('idPais'), 'change', function(){ 
+	var idPais = this.value;
+	var action = '<?php echo $this->baseUrl ?>/zonas/zonas/ciudades';
+	getCiuadades(idPais, action);
+	});
 /*
 	var day	= new LiveValidation('day');
 	day.add(Validate.Presence);

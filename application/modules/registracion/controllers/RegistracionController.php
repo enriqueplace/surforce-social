@@ -29,6 +29,12 @@ class Registracion_RegistracionController extends Zend_Controller_Action{
 
     function addAction(){
         //$info = Zend_Registry::get('personalizacion');
+        Zend_Loader::loadClass('Zonas');
+        $zonas = new Zonas();
+        $where = 'idPadre= 0';
+		$order = 'nombre DESC';
+		$this->view->zonas = $zonas->fetchAll($where, $order);
+		
         if( $this->view->usuarioLogueado){
             $this->_redirect('/perfil/perfil/');
         }
@@ -106,6 +112,7 @@ class Registracion_RegistracionController extends Zend_Controller_Action{
 
         $this->view->action = $this->info->sitio->registracion->add->add;
         $this->view->buttonText = $this->info->sitio->registracion->add->buttonText;
+        $this->view->scriptJs = "prototypeValidate";
         $this->render();
     }
 
