@@ -1,36 +1,36 @@
 <h2><?php echo $this->escape($this->subtitle); ?></h2>
 
 <form id="signup" name="signup" action="<?php echo $this->baseUrl;?>/registracion/registracion/add" method="post" >
-	<input name="check" id="check" value="ok" type="hidden">
-	<input name="user_lang" id="user_lang" value="es" type="hidden">
+    <input name="check" id="check" value="ok" type="hidden">
+    <input name="user_lang" id="user_lang" value="es" type="hidden">
 
 <table>
   <tbody>
   <tr>
     <td>Elige un Usuario: </td>
     <td>
-    	<input name="usuario" class="input,required" id="usuario" value="<?php echo $this->escape($this->registracion->usuario);?>" size="33" maxlength="32" type="text">
+        <input name="usuario" class="input,required" id="usuario" value="<?php echo $this->escape($this->registracion->usuario);?>" size="33" maxlength="32" type="text">
     </td>
   </tr>
 
   <tr>
     <td>Elige una Contrase&ntilde;a: </td>
     <td>
-    	<input name="password" class="input" id="password" value="<?php echo $this->escape($this->registracion->password);?>" size="15" maxlength="32" type="password">
+        <input name="password" class="input" id="password" value="<?php echo $this->escape($this->registracion->password);?>" size="15" maxlength="32" type="password">
     </td>
   </tr>
 
   <tr>
     <td>Repite tu Contrase&ntilde;a: </td>
     <td>
-    	<input name="password2" class="input" id="password2" value="<?php echo $this->escape($this->registracion->password);?>" size="15" maxlength="32" type="password">
+        <input name="password2" class="input" id="password2" value="<?php echo $this->escape($this->registracion->password);?>" size="15" maxlength="32" type="password">
     </td>
   </tr>
 
   <tr>
-  	<td>Tu Correo Electr&oacute;nico </td>
+      <td>Tu Correo Electr&oacute;nico </td>
     <td>
-    	<input name="mail" class="input" id="mail" value="<?php echo $this->escape($this->registracion->mail);?>" size="64" maxlength="64" type="text">
+        <input name="mail" class="input" id="mail" value="<?php echo $this->escape($this->registracion->mail);?>" size="64" maxlength="64" type="text">
     </td>
 
   </tr>
@@ -38,166 +38,166 @@
   <tr>
     <td>Tu Nombre:</td>
     <td>
-      	<input name="nombre" class="input" id="nombre" value="<?php echo $this->escape($this->registracion->nombre);?>" size="40" maxlength="40" type="text">
-   	</td>
+          <input name="nombre" class="input" id="nombre" value="<?php echo $this->escape($this->registracion->nombre);?>" size="40" maxlength="40" type="text">
+       </td>
   </tr>
 
   <tr>
     <td>Tu Sexo:</td>
     <td>
-	  <select name="gender" id="genero" class="input">
-	  	<option value="">...</option>
-	  	<option <?php	if($this->escape($this->registracion->genero=='Hombre')){	echo 'selected="selected"';	} 	?> value="Hombre">Chico</option>
-		<option <?php	if($this->escape($this->registracion->genero=='Mujer')){ 	echo 'selected="selected"';	}	?> value="Mujer">Chica</option>
+      <select name="gender" id="genero" class="input">
+          <option value="">...</option>
+          <option <?php	if($this->escape($this->registracion->genero=='Hombre')){	echo 'selected="selected"';	} 	?> value="Hombre">Chico</option>
+        <option <?php	if($this->escape($this->registracion->genero=='Mujer')){ 	echo 'selected="selected"';	}	?> value="Mujer">Chica</option>
       </select>
-	</td>
+    </td>
   </tr>
 
   <tr>
     <td>Tu Pa&iacute;s:</td>
     <td>
-		<select id="idPais" name="idPais" class="input" >
-	    	<option value="">...</option>	   
-	        <?php foreach ($this->zonas as $zona): ?>
-	        	<option <?php	if($this->escape($this->registracion->idPais==$zona->idZona )){ 	echo 'selected="selected"';	}	?> value="<?php echo $zona->idZona ?>"><?php echo $zona->nombre ?></option>
-	        <?php endforeach; ?>
-	    </select>
-	</td>
+        <select id="idPais" name="idPais" class="input" >
+            <option value="">...</option>
+            <?php foreach ($this->zonas as $zona): ?>
+                <option <?php	if($this->escape($this->registracion->idPais==$zona->idZona )){ 	echo 'selected="selected"';	}	?> value="<?php echo $zona->idZona ?>"><?php echo $zona->nombre ?></option>
+            <?php endforeach; ?>
+        </select>
+    </td>
   </tr>
 
   <tr>
     <td>Tu Estado:</td>
     <td>
-    	<select name="idEstado" id="idEstado" class="input">
-    		<option value="">...</option>
-    		<option  <?php	if($this->escape($this->registracion->idEstado=='Adygeya')){ 	echo 'selected="selected"';	}	?>   value="Adygeya">Adygeya</option>
-    	</select>
-   	</td>
+        <select name="idEstado" id="idEstado" class="input">
+            <option value="">...</option>
+            <option  <?php	if($this->escape($this->registracion->idEstado=='Adygeya')){ 	echo 'selected="selected"';	}	?>   value="Adygeya">Adygeya</option>
+        </select>
+       </td>
   </tr>
 
   <tr>
     <td>Tu Ciudad:</td>
     <td>
-    	<input name="ciudad" class="input" id="ciudad" size="40" maxlength="40" value="<?php echo $this->escape($this->registracion->ciudad);?>" type="text">
+        <input name="ciudad" class="input" id="ciudad" size="40" maxlength="40" value="<?php echo $this->escape($this->registracion->ciudad);?>" type="text">
     </td>
   </tr>
 
   <tr>
     <td>Fecha de Nacimiento:</td>
-	<td>
-		<select name="day" id="day" class="input">
-			<option value="">Dia</option>
-	  	<?php
-	  	for($i=1;$i<=31;$i++){
-	  		$day	=	($i<10?"0$i":$i);
-			echo	"<option ";
-			if($this->escape($this->registracion->day==$day)){
-				echo 'selected="selected"';
-			}
-			echo "value=\"$day\">$day</option>\n";
-	  	}
-	  	?>
+    <td>
+        <select name="day" id="day" class="input">
+            <option value="">Dia</option>
+          <?php
+          for($i=1;$i<=31;$i++){
+              $day	=	($i<10?"0$i":$i);
+            echo	"<option ";
+            if($this->escape($this->registracion->day==$day)){
+                echo 'selected="selected"';
+            }
+            echo "value=\"$day\">$day</option>\n";
+          }
+          ?>
       </select>
 
-	  <select name="month" id="month" class="input" >
-	    <option value="">Mes</option>
-		<option <?php	if($this->escape($this->registracion->month=='01')){ 	echo 'selected="selected"';	}	?> value="01">Enero</option>
-	    <option <?php	if($this->escape($this->registracion->month=='02')){ 	echo 'selected="selected"';	}	?> value="02">Febrero</option>
-	    <option <?php	if($this->escape($this->registracion->month=='03')){ 	echo 'selected="selected"';	}	?> value="03">Marzo</option>
-	    <option <?php	if($this->escape($this->registracion->month=='04')){ 	echo 'selected="selected"';	}	?> value="04">Abril</option>
-	    <option <?php	if($this->escape($this->registracion->month=='05')){ 	echo 'selected="selected"';	}	?> value="05">Mayo</option>
-	    <option <?php	if($this->escape($this->registracion->month=='06')){ 	echo 'selected="selected"';	}	?> value="06">Junio</option>
-	    <option <?php	if($this->escape($this->registracion->month=='07')){ 	echo 'selected="selected"';	}	?> value="07">Julio</option>
-	    <option <?php	if($this->escape($this->registracion->month=='08')){ 	echo 'selected="selected"';	}	?> value="08">Agosto</option>
-	    <option <?php	if($this->escape($this->registracion->month=='09')){ 	echo 'selected="selected"';	}	?> value="09">Setiembre</option>
-	    <option <?php	if($this->escape($this->registracion->month=='10')){ 	echo 'selected="selected"';	}	?> value="10">Octubre</option>
-	    <option <?php	if($this->escape($this->registracion->month=='11')){ 	echo 'selected="selected"';	}	?> value="11">Noviembre</option>
-	    <option <?php	if($this->escape($this->registracion->month=='12')){ 	echo 'selected="selected"';	}	?> value="12">Diciembre</option>
+      <select name="month" id="month" class="input" >
+        <option value="">Mes</option>
+        <option <?php	if($this->escape($this->registracion->month=='01')){ 	echo 'selected="selected"';	}	?> value="01">Enero</option>
+        <option <?php	if($this->escape($this->registracion->month=='02')){ 	echo 'selected="selected"';	}	?> value="02">Febrero</option>
+        <option <?php	if($this->escape($this->registracion->month=='03')){ 	echo 'selected="selected"';	}	?> value="03">Marzo</option>
+        <option <?php	if($this->escape($this->registracion->month=='04')){ 	echo 'selected="selected"';	}	?> value="04">Abril</option>
+        <option <?php	if($this->escape($this->registracion->month=='05')){ 	echo 'selected="selected"';	}	?> value="05">Mayo</option>
+        <option <?php	if($this->escape($this->registracion->month=='06')){ 	echo 'selected="selected"';	}	?> value="06">Junio</option>
+        <option <?php	if($this->escape($this->registracion->month=='07')){ 	echo 'selected="selected"';	}	?> value="07">Julio</option>
+        <option <?php	if($this->escape($this->registracion->month=='08')){ 	echo 'selected="selected"';	}	?> value="08">Agosto</option>
+        <option <?php	if($this->escape($this->registracion->month=='09')){ 	echo 'selected="selected"';	}	?> value="09">Setiembre</option>
+        <option <?php	if($this->escape($this->registracion->month=='10')){ 	echo 'selected="selected"';	}	?> value="10">Octubre</option>
+        <option <?php	if($this->escape($this->registracion->month=='11')){ 	echo 'selected="selected"';	}	?> value="11">Noviembre</option>
+        <option <?php	if($this->escape($this->registracion->month=='12')){ 	echo 'selected="selected"';	}	?> value="12">Diciembre</option>
       </select>
 
-	  <select name="year" id="year" class="input">
-	  	<option value="">A&ntilde;o</option>
-	  	<?php
-	  	for($i=1928;$i<(date("Y")-5);$i++){
-			echo	"<option ";
-			if($this->escape($this->registracion->year==$i)){
-				echo 'selected="selected"';
-			}
-			echo "value=\"$i\">$i</option>\n";
-	  	}
-	  	?>
-	  </select></td>
+      <select name="year" id="year" class="input">
+          <option value="">A&ntilde;o</option>
+          <?php
+          for($i=1928;$i<(date("Y")-5);$i++){
+            echo	"<option ";
+            if($this->escape($this->registracion->year==$i)){
+                echo 'selected="selected"';
+            }
+            echo "value=\"$i\">$i</option>\n";
+          }
+          ?>
+      </select></td>
   </tr>
 
   <tr>
     <td>&nbsp;</td>
     <td>
-    	<input name="terms" id="terms" type="checkbox">
-    	<a href="http://contakme.com/terms.php" target="_blank">Acepto los teminos</a>
+        <input name="terms" id="terms" type="checkbox">
+        <a href="/terms/" target="_blank">Acepto los términos</a>
     </td>
   </tr>
 
   <tr>
     <td>&nbsp;</td>
-	<td>
-		<input name="Submit" value="Crear mi cuenta!" type="submit">
-	</td>
+    <td>
+        <input name="Submit" value="Crear mi cuenta!" type="submit">
+    </td>
   </tr>
 </tbody>
 
 </table>
 <script type="text/javascript">
-	/*function getCiudades
-	* @idPais = id del país para poder sacar sus ciudades
-	*/
-	
-	//	validamos que el usuario exista
-	var usuario = new LiveValidation('usuario');
-	usuario.add(Validate.Presence);
+    /*function getCiudades
+    * @idPais = id del país para poder sacar sus ciudades
+    */
 
-	//	validamos el nombre
-	var nombre = new LiveValidation('nombre');
-	nombre.add(Validate.Presence);
+    //	validamos que el usuario exista
+    var usuario = new LiveValidation('usuario');
+    usuario.add(Validate.Presence);
 
-	//	Validamos que la password tenga por lo menos 6 caracteres y que este completo
-	var password	=	new LiveValidation('password');
-	password.add( Validate.Length, { minimum: 6 } );
-	password.add(Validate.Presence);
+    //	validamos el nombre
+    var nombre = new LiveValidation('nombre');
+    nombre.add(Validate.Presence);
 
-	//	Validamos la confirmacion del password
-	var password2 = new LiveValidation('password2');
-	password2.add( Validate.Confirmation, { match: 'password' } );
-	password2.add(Validate.Presence);
+    //	Validamos que la password tenga por lo menos 6 caracteres y que este completo
+    var password	=	new LiveValidation('password');
+    password.add( Validate.Length, { minimum: 6 } );
+    password.add(Validate.Presence);
 
-	var idPais	= new LiveValidation('idPais');
-	idPais.add(Validate.Presence);
-	Event.observe($('idPais'), 'change', function(){ 
-	var idPais = this.value;
-	var action = '<?php echo $this->baseUrl ?>/zonas/zonas/ciudades';
-	getCiuadades(idPais, action);
-	});
+    //	Validamos la confirmacion del password
+    var password2 = new LiveValidation('password2');
+    password2.add( Validate.Confirmation, { match: 'password' } );
+    password2.add(Validate.Presence);
+
+    var idPais	= new LiveValidation('idPais');
+    idPais.add(Validate.Presence);
+    Event.observe($('idPais'), 'change', function(){
+    var idPais = this.value;
+    var action = '<?php echo $this->baseUrl ?>/zonas/zonas/ciudades';
+    getCiuadades(idPais, action);
+    });
 /*
-	var day	= new LiveValidation('day');
-	day.add(Validate.Presence);
+    var day	= new LiveValidation('day');
+    day.add(Validate.Presence);
 
-	var month	= new LiveValidation('month');
-	month.add(Validate.Presence);
+    var month	= new LiveValidation('month');
+    month.add(Validate.Presence);
 
-	var year	= new LiveValidation('year');
-	year.add(Validate.Presence);
+    var year	= new LiveValidation('year');
+    year.add(Validate.Presence);
 */
-	//	Validamos que escriba su ciudad
-	var ciudad = new LiveValidation('ciudad');
-	ciudad.add(Validate.Presence);
+    //	Validamos que escriba su ciudad
+    var ciudad = new LiveValidation('ciudad');
+    ciudad.add(Validate.Presence);
 
-	// Validamos que acepte los terminos y condiciones
-	var terms = new LiveValidation('terms');
-	terms.add( Validate.Acceptance );
+    // Validamos que acepte los terminos y condiciones
+    var terms = new LiveValidation('terms');
+    terms.add( Validate.Acceptance );
 
-	// Validamos el mail
-	var mail = new LiveValidation('mail');
-	mail.add( Validate.Email );
-	mail.add(Validate.Presence);
+    // Validamos el mail
+    var mail = new LiveValidation('mail');
+    mail.add( Validate.Email );
+    mail.add(Validate.Presence);
 
 </script>
 
