@@ -18,6 +18,7 @@ function login_validar(url_consulta){
     new Ajax.Request(url_consulta, {
 		method: 'post',
 	    parameters: { 
+	    	verificado: $F('verificado'), 
 	    	usuario: $F('usuario'), 
 	    	password: $F('password') 
 	    },
@@ -27,6 +28,7 @@ function login_validar(url_consulta){
 			if(!jsonn.verificado){
 				$('mensaje').update(msgUserPassIncorrectos);
 			}else{
+				$('verificado').value = 'true';
 				$("form-login").submit();
 			}
 	    }

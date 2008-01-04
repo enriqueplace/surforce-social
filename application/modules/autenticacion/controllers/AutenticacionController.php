@@ -28,7 +28,7 @@ class Autenticacion_AutenticacionController extends Zend_Controller_Action {
             $f = new Zend_Filter_StripTags();
             $usuario = $f->filter($this->_request->getPost('usuario'));
             $password = $f->filter($this->_request->getPost('password'));
-			$verificado = $f->filter($this->_request->getPost('verificado'));
+			$verificado = $f->filter($this->_request->getPost('verificado'))=='false'?false:true;
             if (empty($usuario)) {
                 $this->view->message = $info->sitio->autenticacion->login->msgNombreVacio;
             }
@@ -46,15 +46,15 @@ class Autenticacion_AutenticacionController extends Zend_Controller_Action {
 
                 $aut = Zend_Auth::getInstance();
                 $result = $aut->authenticate($autAdapter);
-                if ($result->isValid()) {
-                    $data = $autAdapter->getResultRowObject(null, 'password');
-                    $aut->getStorage()->write($data);
-                    $this->_redirect('/');
-                }
-                else {
+                if(!$verificado){
                 	Zend_Loader::loadClass('Zend_Json');
                 	$this->view->varsJson = array('verificado'=> $result->isValid());
                 	$tplJson='autentificacion';
+                }
+                elseif ($result->isValid()) {
+                    $data = $autAdapter->getResultRowObject(null, 'password');
+                    $aut->getStorage()->write($data);
+                    $this->_redirect('/');
                 }
             }
         }
