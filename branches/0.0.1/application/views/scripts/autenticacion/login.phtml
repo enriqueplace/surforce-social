@@ -1,0 +1,25 @@
+<?php echo $this->render('header.phtml'); ?>
+<script>
+var msgNombreVacio = '<?php echo $this->msgNombreVacio; ?>';
+var msgPasswordVacio = '<?php echo $this->msgPasswordVacio; ?>';
+var msgUserPassIncorrectos = '<?php echo $this->msgUserPassIncorrectos; ?>';
+</script>
+<div id="login-form">
+        <div id="mensaje"></div>
+    <form id="form-login" action="<?php echo $this->baseUrl ?>/autenticacion/autenticacion/login" method="post">
+        <div>
+            <label for="usuario">Usuario: </label>
+            <input type="text" id="usuario" name="usuario" value=""/>
+        </div>
+
+        <div>
+            <label for="password">Clave: </label>
+            <input type="password" id="password" name="password" value=""/>
+        </div>
+
+        <div id="formbutton">
+        	<input type="hidden" id="verificado" name="verificado" value="false"/>
+            <input type="button" name="login" value="Iniciar Sesión" onclick="login_validar($('form-login').action);" />
+        </div>
+    </form>
+</div>

@@ -1,0 +1,26 @@
+<?php echo $this->render('header.phtml'); ?>
+<?php echo $this->render('menu.phtml'); ?>
+
+<div id="contenido">
+
+
+    <?php if(!empty($this->message)) :?>
+        <div id="mensaje">
+            <?php echo $this->escape($this->message);?>
+        </div>
+    <?php endif; ?>
+<?php if($this->exist==1): ?>
+   usuario confirmado
+   <!--
+   <script>
+		setTimeout(
+			function(){ location.href='<?php echo $this->baseUrl; ?>/autenticacion/autenticacion/login'}
+			, 2000);
+	</script>
+	-->
+<?php else: ?>
+	Chequea tu cuenta, te hemos enviado un mail para que confirmes.
+<?php endif;?>
+
+</div>
+<?php echo $this->render('footer.phtml'); ?>
