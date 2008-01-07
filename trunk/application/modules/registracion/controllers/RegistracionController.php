@@ -13,6 +13,7 @@ class Registracion_RegistracionController extends Zend_Controller_Action{
         #asignando el titulo de todo el sitio
         $this->view->title = $this->info->sitio->index->index->titulo;
         $this->view->scriptJs = 'prototypeValidate';
+        
     }
 
     function preDispatch(){
@@ -52,6 +53,14 @@ class Registracion_RegistracionController extends Zend_Controller_Action{
 	    $month 		= 	'';
 	    $year 		= 	'';
         $this->view->subtitle = $this->info->sitio->registracion->add->titulo;
+        /**
+         * recepción de formulario:
+         * ------------------------
+         * -crea usuario
+         * -crea entrada para la validación
+         * -envía email
+         * -redirecciona a login
+         */
         if ($this->_request->isPost()) {
             Zend_Loader::loadClass('Zend_Filter_StripTags');
             $filter 	= new Zend_Filter_StripTags();
@@ -87,6 +96,40 @@ class Registracion_RegistracionController extends Zend_Controller_Action{
                 );
                 $Registracion = new Registracion();
                 $Registracion->insert($data);
+                Zend_Loader::loadClass('Confirmacion');
+                $adaptadorDb	= $Registracion->getAdapter();
+                $lastId 		= $adaptadorDb->lastInsertId('Confirmacion');
+                $codeValidation = md5($creado);
+                $data			= null;
+                $data			= array(
+                	'id_usuario'		=>$lastId,
+                	'code_validation'	=>$codeValidation
+                );
+                $Confirmacion 	= new Confirmacion();
+                $Confirmacion->insert($data);
+                /**
+                 * enviando email con la clave de confirmacion
+                 * nota: comprobar el envío de email, en localhost me da error. De allí que tenga puesto con exepcion(try...catch)
+                 */
+                Zend_Loader::loadClass('Zend_Mail_Transport_Smtp');
+                Zend_Loader::loadClass('Zend_Mail');
+                
+                $urlValidation  = $this->_request->getBaseUrl().'?key_code='.$codeValidation;
+                $configSmtp = array('ssl' => 'ssl', 'port'=>'25');
+                $configSendmail = Zend_Registry::get('config');
+                try {
+                	$tr = new Zend_Mail_Transport_Smtp('localhost ', $configSmtp);
+					Zend_Mail::setDefaultTransport($tr);
+					$sendMail = new Zend_Mail();
+					$sendMail->setBodyText($urlValidation);//mejorar el body, por ahora solo envío la url
+					$sendMail->setFrom($configSendmail->mail->admin, $configSendmail->mail->admin);
+					$sendMail->addTo($mail, $nombre);
+					$sendMail->setSubject($configSendmail->mail->asuntoConfirmation);
+					$sendMail->send();
+				} catch (Exception $e) {
+					//throw new i21_Exception($e->getMessage());
+				}
+                //fin de mail
                 $this->_redirect('/registracion/registracion/confirm');
                 return;
             }else{
@@ -117,7 +160,28 @@ class Registracion_RegistracionController extends Zend_Controller_Action{
     }
 
     function	confirmAction(){
-
+		if(isset($_GET['key_code'])){
+			Zend_Loader::loadClass('Confirmacion');
+			Zend_Loader::loadClass('Zend_Filter_StripTags');
+			$Confirmacion 	= new Confirmacion();
+			$f = new Zend_Filter_StripTags();
+			$where 			= 'code_validation = \''.$f->filter($_GET['key_code']).'\'';
+			$result 		= $Confirmacion->fetchAll($where);
+			$exist			= count($result);
+			if($exist){
+				$idUser 	= $result->current()->id_usuario;
+				$Registracion = new Registracion();
+				$data 		= array('estado'=>'1');
+				$where 		= $Registracion->getAdapter()->quoteInto('idUsuario = ?', $idUser);
+				$Registracion->update($data, $where);
+			}
+			$this->view->exist = $exist;
+			$this->render('confirm');
+		}else{
+			$this->_redirect('/');
+		}
+		
+		
     }
 }
 ?>
