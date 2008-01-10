@@ -66,7 +66,7 @@ class Registracion_RegistracionController extends Zend_Controller_Action{
             $filter 	= new Zend_Filter_StripTags();
 
             $usuario 	=	trim($filter->filter($this->_request->getPost('usuario')));
-            $password 	= 	trim($filter->filter($this->_request->getPost('password')));
+            $password 	= 	md5(trim($filter->filter($this->_request->getPost('password'))));
             $nombre 	= 	trim($filter->filter($this->_request->getPost('nombre')));
             $apellido	= 	trim($filter->filter($this->_request->getPost('apellido')));
             $genero 	= 	trim($filter->filter($this->_request->getPost('genero')));
@@ -176,10 +176,8 @@ class Registracion_RegistracionController extends Zend_Controller_Action{
 				$Registracion->update($data, $where);
 			}
 			$this->view->exist = $exist;
-			$this->render('confirm');
-		}else{
-			$this->_redirect('/');
 		}
+		$this->render('confirm');
 		
 		
     }
