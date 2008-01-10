@@ -27,7 +27,7 @@ class Autenticacion_AutenticacionController extends Zend_Controller_Action {
             Zend_Loader::loadClass('Zend_Filter_StripTags');
             $f = new Zend_Filter_StripTags();
             $usuario = $f->filter($this->_request->getPost('usuario'));
-            $password = $f->filter($this->_request->getPost('password'));
+            $password = md5($f->filter($this->_request->getPost('password')));
 			$verificado = $f->filter($this->_request->getPost('verificado'))=='false'?false:true;
             if (empty($usuario)) {
                 $this->view->message = $info->sitio->autenticacion->login->msgNombreVacio;
