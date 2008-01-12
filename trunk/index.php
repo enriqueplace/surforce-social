@@ -9,6 +9,9 @@ set_include_path(	'.' .
 );
 
 include "Zend/Loader.php";
+Zend_Loader::loadClass('Zend_Controller_Plugin_Abstract');
+Zend_Loader::loadClass('Zend_Controller_Request_Abstract');
+Zend_Loader::loadClass('Zend_Controller_Router_Rewrite');
 Zend_Loader::loadClass('Zend_Controller_Front');
 Zend_Loader::loadClass('Zend_Config_Ini');
 Zend_Loader::loadClass('Zend_Registry');
@@ -31,10 +34,27 @@ $db = Zend_Db::factory($config->db->adapter, $config->db->config->toArray());
 Zend_Db_Table::setDefaultAdapter($db);
 Zend_Registry::set('dbAdapter', $db);
 
+//creo plugin para debugear
+class DebugPlugin extends Zend_Controller_Plugin_Abstract
+{
+    static function debug($var, $label=null){
+    	$_config = new Zend_Config_Ini('./application/config.ini', 'general');
+    	$isDebug = $_config->debug;
+    	if($isDebug){
+    		Zend_Loader::loadClass('Zend_Debug');
+        	Zend_Debug::dump($var, $label);
+    	}
+    }
+}
 // Setup controller
 $frontController = Zend_Controller_Front::getInstance();
 $frontController->throwExceptions(true);
 $frontController->addModuleDirectory('./application/modules/');
+// añado pluggin para debugear
+$frontController->setRouter(new Zend_Controller_Router_Rewrite());
+$frontController->registerPlugin(new DebugPlugin());
+//añado modulo de registracion
+$frontController->addModuleDirectory('library/Zsurforce/modules');
 
 // run!
 try {
