@@ -3,31 +3,32 @@ error_reporting(E_ALL|E_STRICT);
 date_default_timezone_set('America/Montevideo');
 
 set_include_path(	'.' .
-    PATH_SEPARATOR . './library' .
+    PATH_SEPARATOR . './library/' .
+    PATH_SEPARATOR . './application/' .
     PATH_SEPARATOR . './application/models/' .
+    PATH_SEPARATOR . './public/' .
     PATH_SEPARATOR . get_include_path()
 );
 
 include "Zend/Loader.php";
-Zend_Loader::loadClass('Zend_Controller_Plugin_Abstract');
-Zend_Loader::loadClass('Zend_Controller_Request_Abstract');
-Zend_Loader::loadClass('Zend_Controller_Router_Rewrite');
-Zend_Loader::loadClass('Zend_Controller_Front');
-Zend_Loader::loadClass('Zend_Config_Ini');
-Zend_Loader::loadClass('Zend_Registry');
-Zend_Loader::loadClass('Zend_Db');
-Zend_Loader::loadClass('Zend_Db_Table');
-Zend_Loader::loadClass('Zend_Auth');
+Zend_Loader::registerAutoload();
 
-// load configuration
-$config = new Zend_Config_Ini('./application/config.ini', 'general');
+/** CONFIGURACION **/
 $registry = Zend_Registry::getInstance();
-$registry->set('config', $config);
 
-// load personalizacion
-$personalizacion = new Zend_Config_Ini('./application/config.ini', 'personalizacion');
-$registry = Zend_Registry::getInstance();
+$config = new Zend_Config_Ini(
+	'./application/config.ini', 
+	'general'
+);
+$personalizacion = new Zend_Config_Ini(
+	'./application/config.ini', 
+	'personalizacion'
+);
+
 $registry->set('personalizacion', $personalizacion);
+$registry->set('config', $config);
+$registry->set('base_path', realpath('.') );
+$registry->set('debug', $config->debug);
 
 // setup database
 $db = Zend_Db::factory($config->db->adapter, $config->db->config->toArray());
