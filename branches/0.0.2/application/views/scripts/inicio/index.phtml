@@ -1,0 +1,126 @@
+<?php echo $this->render('header.phtml'); ?>
+<div id="login-form">
+    <?php if(!empty($this->message)) :?>
+        <div id="mensaje"><?php echo $this->escape($this->message);?></div>
+    <?php endif; ?>
+
+    <div class="loginbox">� tienes una cuenta
+        <strong><a href="<?php echo $this->baseUrl;?>/autenticacion/autenticacion/login" onclick="return modal_login()">Inicia Sesión</a></strong> ó
+        <a href="<?php echo $this->baseUrl;?>/registracion/registracion/"><strong>Crea tu Cuenta Gratis</strong></a>.<br>
+    </div>
+</div>
+
+<div id="main">
+
+    <div class="menusections">
+        <ul id="menu_pric_mem" class="menuoff_bg">
+            <li><a href="#">Buscar Gente </a></li>
+            <li><a href="#">Buscar Tags</a></li>
+        </ul>
+    </div>
+
+    <div class="submenu">
+
+        <div id="menu_pric_mem_option_1" style="display: block;">
+
+          <input value="1" name="type" id="type" type="hidden">
+
+            <table>
+
+                <form name="search" id="search" action="search_results.php" method="get"></form>
+
+            <tbody><tr>
+              <td>
+                <select id="gender" name="gender">
+                    <option value="all" selected="selected">Todos</option>
+                    <option value="f">Chicas</option>
+                    <option value="m">Chicos</option>
+                </select>
+
+                <select id="min_age" name="min_age">
+                    <option value="18" selected="selected">18</option>
+                </select>
+
+                <select id="max_age" name="max_age" class="input">
+                    <option value="18">18</option>
+                </select>
+
+                <select id="country" name="country" onchange="getStateListSearch(this)" style="width: 220px;">
+                    <option value="" selected="selected"> Cualquier País</option>
+                </select>
+
+                <select name="statesearch" id="statesearch">
+                    <option value="" selected="selected">Cualquier Región</option>
+                </select>
+
+                <input id="pictures_only" name="pictures_only" value="1" checked="checked" type="checkbox">
+                <label for="pictures_only">Con fotos</label>
+                &nbsp;
+                <input name="Submit" value="Buscar" type="submit">
+              </td>
+            </tr>
+
+          </tbody></table>
+        </div>
+
+<div id="menu_pric_mem_option_2" style="display: none;">
+<input value="2" name="type" id="type" type="hidden">
+    <table>
+  <form name="search_tags" id="search_tags" action="search_results.php" method="get"></form>
+  <tbody><tr>
+      <td>
+        Buscar Tags: <input name="tags" value="" id="tags" size="35" type="text">
+        <input name="Submit" value="Buscar" type="submit">
+      </td>
+      <td width="10"></td>
+      <td></td>
+    </tr>
+  </tbody></table>
+  </div>
+</div>
+<div class="separator"></div>
+
+<table>
+  <tbody><tr>
+    <td><div class="home_main">
+
+        <div class="home_pics">
+            <a href="/profile.php?u=chicohot3">
+                <img src="" class="img10 img"
+                title="Chico, 19 años de San Miguel de Tucuman Tucumán, Argentina"
+                alt="Chico, 19 años de San Miguel de Tucuman Tucumán, Argentina"></a>
+        </div>
+
+</div></td>
+    <td><div class="home_welcome grey">
+
+<p><img src="/home_main.gif"></p>
+<p>Ahora puedes formar parte de la red más interactiva de contactos online. Conoce a la gente que buscas y comunicate sin limites!</p>
+<ul>
+<li>Contacta amigos y chatea</li>
+<li>Crea albums de fotos y videos</li>
+<li>Cuenta tus experiencias y comenta</li>
+<li>Vota y haz que te voten</li>
+<li>Más fácil que nunca!</li>
+</ul>
+
+<p><a href="/signup.php">
+    <img src="/home_button_create.gif" border="0"></a></p>
+</div>
+
+</td>
+  </tr>
+</tbody></table>
+
+
+<div class="sep"></div>
+
+<div class="profile_title">nuevas fotos subidas</div>
+
+<div class="">
+<a href="/image.php?img=375247061">
+    <img src="/375247061.txt" class="img10 img"></a>
+</div>
+
+<?php echo $this->render('footer.phtml'); ?>
+
