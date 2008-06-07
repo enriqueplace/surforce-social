@@ -30,6 +30,14 @@ $registry->set('config', $config);
 $registry->set('base_path', realpath('.') );
 $registry->set('debug', $config->debug);
 
+/**
+ * Zend_Layout
+ */
+Zend_Layout::startMvc(array(
+    'layoutPath' => $registry->get('base_path') . '/application/scripts'
+));
+$view = Zend_Layout::getMvcInstance()->getView();
+
 // setup database
 $db = Zend_Db::factory($config->db->adapter, $config->db->config->toArray());
 Zend_Db_Table::setDefaultAdapter($db);
@@ -60,9 +68,10 @@ $frontController->addModuleDirectory('library/Zsurforce/modules');
 // run!
 try {
     $frontController->dispatch();
-} catch (Exception $e) {
-    echo "Message: " . $e->getMessage() . "\n";
+} catch (Exception $e) {    
+    echo nl2br($e->__toString());
 }
+
 // Segun la documentacion, no se cierra el tag PHP en el index.php porque no se necesita y asi
 // se previenen errores dificiles de encontrar como con la funcion header() si se deja un
 // espacio en blanco al final.
