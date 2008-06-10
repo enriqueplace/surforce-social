@@ -12,9 +12,19 @@ class IndexController extends Zend_Controller_Action{
 	function indexAction(){
 		$info = Zend_Registry::get('personalizacion');
 		$this->view->title = $info->sitio->index->index->titulo;
-		//$this->render();
-		$this->_redirect('/noticias/noticias');
-		return;
+		$this->view->scriptJs = 'mootools';
+	}
+	function bestfriendsAction()
+	{
+	
+	}
+	function chasmoAction()
+	{
+	
+	}
+	function greenAction()
+	{
+	
 	}
 
 }
