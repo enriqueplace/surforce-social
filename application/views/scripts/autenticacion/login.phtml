@@ -19,7 +19,7 @@ var msgUserPassIncorrectos = '<?php echo $this->msgUserPassIncorrectos; ?>';
 
         <div id="formbutton">
         	<input type="hidden" id="verificado" name="verificado" value="false"/>
-            <input type="button" name="login" value="Iniciar Sesión" onclick="login_validar($('form-login').action);" />
+            <button type="submit" name="login" onclick="login_validar($('form-login').action);" />Iniciar Sesión</button> 
         </div>
     </form>
 </div>
