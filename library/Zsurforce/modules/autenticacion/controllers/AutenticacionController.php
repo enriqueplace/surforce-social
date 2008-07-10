@@ -1,14 +1,16 @@
 <?php
 class Autenticacion_AutenticacionController extends Zend_Controller_Action {
 
-    function init(){
+    function init(){ 
         $this->initView();
         $this->view->baseUrl = $this->_request->getBaseUrl();
         $this->view->setScriptPath('./application/views/scripts/');
+        $this->view->opcionMenu = 'autenticacion';
     }
 
     function indexAction(){
-        $this->_redirect('/');
+        
+        $this->_redirect('/autenticacion/autenticacion/login');
     }
 
     function logoutAction(){

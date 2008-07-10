@@ -1,5 +1,5 @@
 function login_validar(url_consulta){
-    if( $F('password') ==""){
+    if( $F('password') == ""){
         $('mensaje').update(msgPasswordVacio);
         new Effect.Shake($('login-form'));
         $('password').focus();
@@ -33,8 +33,8 @@ function login_validar(url_consulta){
 			}
 	    }
     });
-    	$('mensaje').update('comprobando....');        
-    }
+    $('mensaje').update('comprobando....');        
+}
 function getCiuadades(idPais, action){
 	if(idPais > 0){
 		var url_consulta= '';
