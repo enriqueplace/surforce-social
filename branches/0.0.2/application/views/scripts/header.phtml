@@ -14,11 +14,11 @@
 	        <h1>SURFORCE-SOCIAL</h1>
 	        <?php if( $this->user ) echo "usuario: ".$this->escape($this->user->usuario);?>	        
 	       	<ul class="glossymenu">
-				<li class="current"><a href="<?php echo $this->baseUrl;?>"><b>Home</b></a></li>				
-				<li><a href="<?php echo $this->baseUrl;?>/autenticacion/autenticacion/login/op/sesion"><b>Iniciar Sesión</b></a></li>
-				<li><a href="<?php echo $this->baseUrl;?>/registracion/registracion/add/op/registro"><b>Registrarte</b></a></li>
-				<li><a href="<?php echo $this->baseUrl;?>/forgotPass/forgotPass/op/lost"><b>Perdí mi clave</b></a></li>
-				<li><a href="<?php echo $this->baseUrl;?>/faqs/faqs/op/faqs"><b>FAQs</b></a></li>	
+				<li <?php if($this->opcionMenu == 'home'): ?>class="current"<?php endif ?>><a href="<?php echo $this->baseUrl;?>"><b>Home</b></a></li>				
+				<li <?php if($this->opcionMenu == 'autenticacion'): ?>class="current"<?php endif ?>><a href="<?php echo $this->baseUrl;?>/autenticacion/autenticacion/login"><b>Iniciar Sesión</b></a></li>
+				<li <?php if($this->opcionMenu == 'registracion'): ?>class="current"<?php endif ?>><a href="<?php echo $this->baseUrl;?>/registracion/registracion/add"><b>Registrarte</b></a></li>
+				<li <?php if($this->opcionMenu == 'forgotpass'): ?>class="current"<?php endif ?>><a href="<?php echo $this->baseUrl;?>/forgotPass/forgotPass/"><b>Perdí mi clave</b></a></li>
+				<li <?php if($this->opcionMenu == 'faqs'): ?>class="current"<?php endif ?>><a href="<?php echo $this->baseUrl;?>/faqs/faqs/"><b>FAQs</b></a></li>	
 			</ul>
 	    </div>
 	    

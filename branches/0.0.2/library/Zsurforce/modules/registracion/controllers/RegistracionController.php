@@ -23,6 +23,7 @@ class Registracion_RegistracionController extends Zend_Controller_Action{
         $this->view->user 		= Zend_Auth::getInstance()->getIdentity();
         $this->view->title 		= $this->info->sitio->index->index->titulo;
         $this->view->scriptJs 	= 'prototypeValidate';
+        $this->view->opcionMenu = 'registracion';
         
     }
 

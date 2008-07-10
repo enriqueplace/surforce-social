@@ -12,6 +12,7 @@ class Faqs_FaqsController extends Zend_Controller_Action{
 		$this->info = Zend_Registry::get('personalizacion');
 		#asignando el titulo de todo el sitio
 		$this->view->title = $this->info->sitio->index->index->titulo;
+        $this->view->opcionMenu = 'faqs';
 	}
 
 	function preDispatch(){
