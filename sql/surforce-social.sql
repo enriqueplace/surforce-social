@@ -1,16 +1,16 @@
 -- phpMyAdmin SQL Dump
--- version 2.11.1
+-- version 2.11.2.1
 -- http://www.phpmyadmin.net
 --
--- Servidor: localhost
--- Tiempo de generación: 07-01-2008 a las 09:33:39
--- Versión del servidor: 5.0.45
--- Versión de PHP: 5.2.4
+-- Servidor: mysql.surforce.com
+-- Tiempo de generación: 20-07-2008 a las 13:46:56
+-- Versión del servidor: 5.0.24
+-- Versión de PHP: 4.4.7
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 --
--- Base de datos: `surforce-social`
+-- Base de datos: `social`
 --
 
 -- --------------------------------------------------------
@@ -19,7 +19,8 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Estructura de tabla para la tabla `confirmacion`
 --
 
-CREATE TABLE `confirmacion` (
+DROP TABLE IF EXISTS `confirmacion`;
+CREATE TABLE IF NOT EXISTS `confirmacion` (
   `id_usuario` mediumint(10) unsigned NOT NULL,
   `code_validation` varchar(32) collate utf8_spanish_ci NOT NULL,
   `creado` timestamp NOT NULL default CURRENT_TIMESTAMP,
@@ -30,6 +31,27 @@ CREATE TABLE `confirmacion` (
 -- Volcar la base de datos para la tabla `confirmacion`
 --
 
+INSERT INTO `confirmacion` (`id_usuario`, `code_validation`, `creado`) VALUES
+(14, 'ab0c7b7724e6e848ef3ba54914156b82', '2008-01-07 19:24:46'),
+(15, 'd82a5e1cb436a78a94eba1513cb3af3f', '2008-01-08 18:07:01'),
+(16, 'a169eae5ef1e5a8f42edb84a3c6dc5c1', '2008-01-18 12:06:51'),
+(17, '190b7867e7972e58e6f7256e09f656f6', '2008-01-20 13:05:15'),
+(18, '7b9bc8ab613a33134404c3ed8718ae10', '2008-01-25 14:27:15'),
+(19, '19a138b627334018de614d02bc5d2c35', '2008-02-19 04:37:09'),
+(20, '3473acc03969799d6bf25371d0f93cde', '2008-02-22 18:56:47'),
+(21, 'aad4376563d900836e6fb15f764f5c57', '2008-03-23 20:17:48'),
+(22, '716d093aeeaa614fc2bfd1b186464bbc', '2008-04-04 12:08:02'),
+(23, '519d87944a41d9095b280cc278f28daa', '2008-04-14 15:22:22'),
+(24, 'ae8f2e17537f11a5fe43bfe1878d1cbd', '2008-05-09 17:49:35'),
+(25, 'a5d3ea969f35c8f886710a2491b3721a', '2008-06-01 22:32:54'),
+(26, '11d7e954bb730570055380bdffec6888', '2008-06-03 09:41:15'),
+(27, '3e285bd50348d831b358b15fa72fac5f', '2008-06-04 09:51:45'),
+(28, '1e109e083a9d2ab04a73aae21d5b500d', '2008-06-16 11:57:30'),
+(29, 'c66d0c14fd136011954007758ac24982', '2008-06-19 00:41:00'),
+(30, 'e4a37f810b407717c6e79332f8a1ec29', '2008-06-24 07:57:07'),
+(31, '16a51c0afb0971b6818430d5bbe61d91', '2008-07-01 08:40:30'),
+(32, '3e53c437fd78501d5de982bdb6cc5458', '2008-07-09 11:55:17'),
+(33, '68797888aecca5793b086f9ac47de268', '2008-07-11 13:00:37');
 
 -- --------------------------------------------------------
 
@@ -37,20 +59,21 @@ CREATE TABLE `confirmacion` (
 -- Estructura de tabla para la tabla `faqs`
 --
 
-CREATE TABLE `faqs` (
+DROP TABLE IF EXISTS `faqs`;
+CREATE TABLE IF NOT EXISTS `faqs` (
   `id` int(50) NOT NULL auto_increment,
-  `pregunta` varchar(250) character set utf8 collate utf8_unicode_ci NOT NULL,
-  `respuesta` varchar(250) character set utf8 collate utf8_unicode_ci NOT NULL,
+  `pregunta` varchar(250) character set utf8 collate utf8_spanish_ci NOT NULL,
+  `respuesta` varchar(250) character set utf8 collate utf8_spanish_ci NOT NULL,
   `fecha` timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=3 ;
 
 --
 -- Volcar la base de datos para la tabla `faqs`
 --
 
 INSERT INTO `faqs` (`id`, `pregunta`, `respuesta`, `fecha`) VALUES
-(1,'¿Cómo puedo obtener una cuenta?', 'Deberia contactarse con el owner del proyecto a traves de un email', '2007-12-11 23:14:31');
+(1, '¿Cómo puedo obtener una cuenta?', 'Registrando sus datos en el formulario de ingreso, en el menú del sistema', '2008-02-06 12:34:21');
 
 -- --------------------------------------------------------
 
@@ -58,7 +81,8 @@ INSERT INTO `faqs` (`id`, `pregunta`, `respuesta`, `fecha`) VALUES
 -- Estructura de tabla para la tabla `menu`
 --
 
-CREATE TABLE `menu` (
+DROP TABLE IF EXISTS `menu`;
+CREATE TABLE IF NOT EXISTS `menu` (
   `idMenu` mediumint(10) unsigned NOT NULL auto_increment,
   `idCategoriaMenu` mediumint(10) NOT NULL,
   `item` varchar(45) character set utf8 collate utf8_spanish_ci NOT NULL,
@@ -67,7 +91,7 @@ CREATE TABLE `menu` (
   `privado` char(1) character set utf8 collate utf8_spanish_ci NOT NULL default '1',
   `estado` tinyint(1) NOT NULL,
   PRIMARY KEY  (`idMenu`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
 
 --
 -- Volcar la base de datos para la tabla `menu`
@@ -85,7 +109,9 @@ INSERT INTO `menu` (`idMenu`, `idCategoriaMenu`, `item`, `destino`, `posicion`, 
 (14, 0, 'Comunidades', '/comunidades/comunidades/', 4, '1', 1),
 (15, 0, 'Mis Amigos', '/amigos/amigos', 6, '1', 1),
 (16, 0, 'Buscar', '/buscar/buscar', 6, '1', 1),
-(17, 0, 'Mensajeria', '/mensajeria/mensajeria/', 8, '1', 1);
+(17, 0, 'Mensajeria', '/mensajeria/mensajeria/', 8, '1', 1),
+(19, 0, 'Primer pagina con TinyMCE', '/paginas/paginas/ver/id/5', 0, '0', 0),
+(20, 0, 'Primer pagina con TinyMCE', '/paginas/paginas/ver/id/5', 0, '0', 0);
 
 -- --------------------------------------------------------
 
@@ -93,7 +119,8 @@ INSERT INTO `menu` (`idMenu`, `idCategoriaMenu`, `item`, `destino`, `posicion`, 
 -- Estructura de tabla para la tabla `menus`
 --
 
-CREATE TABLE `menus` (
+DROP TABLE IF EXISTS `menus`;
+CREATE TABLE IF NOT EXISTS `menus` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `id_sitio` int(10) unsigned NOT NULL,
   `nombre` varchar(150) collate utf8_spanish_ci NOT NULL,
@@ -119,7 +146,8 @@ INSERT INTO `menus` (`id`, `id_sitio`, `nombre`, `titulo`, `descripcion`, `posic
 -- Estructura de tabla para la tabla `menus_items`
 --
 
-CREATE TABLE `menus_items` (
+DROP TABLE IF EXISTS `menus_items`;
+CREATE TABLE IF NOT EXISTS `menus_items` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `id_menu` int(10) unsigned NOT NULL,
   `item` varchar(50) collate utf8_spanish_ci NOT NULL,
@@ -144,7 +172,8 @@ INSERT INTO `menus_items` (`id`, `id_menu`, `item`, `destino`, `posicion`, `priv
 -- Estructura de tabla para la tabla `noticias`
 --
 
-CREATE TABLE `noticias` (
+DROP TABLE IF EXISTS `noticias`;
+CREATE TABLE IF NOT EXISTS `noticias` (
   `idNoticia` mediumint(10) NOT NULL auto_increment,
   `titulo` varchar(150) character set utf8 collate utf8_spanish_ci NOT NULL,
   `contenido` text character set utf8 collate utf8_spanish_ci NOT NULL,
@@ -166,7 +195,8 @@ INSERT INTO `noticias` (`idNoticia`, `titulo`, `contenido`, `fecha`, `id_usuario
 -- Estructura de tabla para la tabla `paginas`
 --
 
-CREATE TABLE `paginas` (
+DROP TABLE IF EXISTS `paginas`;
+CREATE TABLE IF NOT EXISTS `paginas` (
   `id` int(10) NOT NULL auto_increment,
   `titulo` varchar(150) collate utf8_spanish_ci NOT NULL,
   `contenido` text collate utf8_spanish_ci NOT NULL,
@@ -181,8 +211,7 @@ CREATE TABLE `paginas` (
 
 INSERT INTO `paginas` (`id`, `titulo`, `contenido`, `fecha`, `id_usuario`) VALUES
 (1, 'Declaran esencialidad de servicios quirurgicos', 'Tras el Consejo de Ministros', '2007-08-01 01:15:13', 1),
-(5, 'Primer pagina con TinyMCE', 'Mmm... c&oacute;mo se ve esto?', '2007-08-13 20:32:18', 0),
-(6, 'Sin festejos, Fidel cumple años', '<img src="http://www.elpais.com.uy/07/08/13/33742_298.JPG" alt="Fidel" title="Fidel Castro" width="298" height="255" align="right" />La Habana', '2007-08-14 01:23:57', 0);
+(5, 'Primer pagina con TinyMCE', 'Mmm... c&oacute;mo se ve esto?', '2007-08-13 20:32:18', 0);
 
 -- --------------------------------------------------------
 
@@ -190,7 +219,8 @@ INSERT INTO `paginas` (`id`, `titulo`, `contenido`, `fecha`, `id_usuario`) VALUE
 -- Estructura de tabla para la tabla `styles_propiedades`
 --
 
-CREATE TABLE `styles_propiedades` (
+DROP TABLE IF EXISTS `styles_propiedades`;
+CREATE TABLE IF NOT EXISTS `styles_propiedades` (
   `id_propiedad` int(11) NOT NULL auto_increment,
   `propiedad` varchar(32) collate utf8_spanish_ci NOT NULL,
   PRIMARY KEY  (`id_propiedad`)
@@ -329,7 +359,8 @@ INSERT INTO `styles_propiedades` (`id_propiedad`, `propiedad`) VALUES
 -- Estructura de tabla para la tabla `styles_propiedades_x_selectores`
 --
 
-CREATE TABLE `styles_propiedades_x_selectores` (
+DROP TABLE IF EXISTS `styles_propiedades_x_selectores`;
+CREATE TABLE IF NOT EXISTS `styles_propiedades_x_selectores` (
   `id_selector` int(11) NOT NULL,
   `id_propiedad` int(11) NOT NULL,
   `valor` varchar(64) collate utf8_spanish_ci default NULL,
@@ -380,7 +411,8 @@ INSERT INTO `styles_propiedades_x_selectores` (`id_selector`, `id_propiedad`, `v
 -- Estructura de tabla para la tabla `styles_selectores`
 --
 
-CREATE TABLE `styles_selectores` (
+DROP TABLE IF EXISTS `styles_selectores`;
+CREATE TABLE IF NOT EXISTS `styles_selectores` (
   `id_selector` int(11) NOT NULL auto_increment,
   `selector` varchar(64) collate utf8_spanish_ci NOT NULL,
   `descripcion` varchar(255) collate utf8_spanish_ci default NULL,
@@ -414,7 +446,8 @@ INSERT INTO `styles_selectores` (`id_selector`, `selector`, `descripcion`) VALUE
 -- Estructura de tabla para la tabla `usuarios`
 --
 
-CREATE TABLE `usuarios` (
+DROP TABLE IF EXISTS `usuarios`;
+CREATE TABLE IF NOT EXISTS `usuarios` (
   `idUsuario` mediumint(10) unsigned NOT NULL auto_increment,
   `idZona` mediumint(10) NOT NULL,
   `usuario` varchar(32) character set utf8 collate utf8_spanish_ci NOT NULL,
@@ -434,15 +467,20 @@ CREATE TABLE `usuarios` (
   KEY `pass_idx` (`password`),
   KEY `nacimiento_idx` (`fechaNacimiento`),
   KEY `estado_idx` (`estado`)
-) ENGINE=MyISAM  AUTO_INCREMENT=14 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=34 ;
 
 --
 -- Volcar la base de datos para la tabla `usuarios`
 --
 
 INSERT INTO `usuarios` (`idUsuario`, `idZona`, `usuario`, `password`, `nombre`, `apellido`, `mail`, `genero`, `ciudad`, `fechaNacimiento`, `estado`, `creado`, `modificado`) VALUES
-(11, 0, 'admin', 'admin', 'admin', '', 'at.elah@gmail.com', '', 'Buenos Aires', '2002-12-31', 1, '2008-01-02 11:44:34', '2008-01-02 10:47:54'),
-(13, 0, 'enriqueplace', 'pepepepe', 'Enrique Place', '', 'enriqueplace@gmail.com', '', 'Montevideo', '1973-08-05', 2, '2008-01-03 19:50:53', '2008-01-03 18:50:54');
+(11, 0, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', 'admin', 'surforce@gmail.com', '', 'Buenos Aires', '2002-12-31', 1, '2008-01-02 11:44:34', '2008-07-11 12:53:42'),
+(33, 0, 'enriqueplace', '864eb21c6bffc9120123f4378a030305', 'Enrique Place', '', 'enriqueplace@gmail.com', '', 'Capital Federal', '1973-08-05', 2, '2008-07-11 17:00:37', '2008-07-11 13:00:37'),
+(28, 0, 'guilleuy', '05a671c66aefea124cc08b76ea6d30bb', 'Guillermo', '', 'gmartony@cue.comm.uy', '', 'Montevideo', '1971-03-14', 2, '2008-06-16 15:57:30', '2008-06-16 11:57:30'),
+(29, 0, 'omar', '0ca9deeede136f61f21d948aee4634c7', 'omar', '', 'campbell.sx@gmail.com', '', 'valencia', '1986-02-03', 2, '2008-06-19 04:41:00', '2008-06-19 00:41:00'),
+(30, 0, 'garciga', 'dfe483413e24a5b1506389d36ebfd05c', 'eduardo', '', 'garciga@yahoo.com', '', 'rerere', '1953-01-28', 2, '2008-06-24 11:57:07', '2008-06-24 07:57:07'),
+(31, 0, 'Ber79', '43b8a2640bc945a0f6b311e3d626d942', 'Bernardo', '', 'braskovsky@telematica.com.ar', '', 'S.M. de TucumÃ¡n', '1979-06-20', 2, '2008-07-01 12:40:30', '2008-07-01 08:40:30'),
+(32, 0, 'lisandro', '85133e07ba49e25e70d977345ccdaef7', 'lisandro', '', 'gustavomartinez@gmail.com', '', '', '0000-00-00', 2, '2008-07-09 15:55:17', '2008-07-09 11:55:17');
 
 -- --------------------------------------------------------
 
@@ -450,13 +488,14 @@ INSERT INTO `usuarios` (`idUsuario`, `idZona`, `usuario`, `password`, `nombre`, 
 -- Estructura de tabla para la tabla `zonas`
 --
 
-CREATE TABLE `zonas` (
+DROP TABLE IF EXISTS `zonas`;
+CREATE TABLE IF NOT EXISTS `zonas` (
   `idZona` mediumint(9) NOT NULL auto_increment,
   `idPadre` mediumint(9) default NULL,
   `nombre` char(50) default NULL,
   `estado` tinyint(1) default '1',
   PRIMARY KEY  (`idZona`)
-) ENGINE=MyISAM  AUTO_INCREMENT=5048 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5048 ;
 
 --
 -- Volcar la base de datos para la tabla `zonas`
