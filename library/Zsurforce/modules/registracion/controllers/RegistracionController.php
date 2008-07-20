@@ -123,10 +123,12 @@ class Registracion_RegistracionController extends Zend_Controller_Action
                 	$tr 		= new Zend_Mail_Transport_Smtp('localhost ', $configSmtp);
 					Zend_Mail::setDefaultTransport($tr);
 					$sendMail 	= new Zend_Mail();
+					
 					$sendMail->setBodyText($urlValidation);				//mejorar el body, por ahora solo envío la url
 					$sendMail->setFrom($configSendmail->mail->admin, $configSendmail->mail->admin);
 					$sendMail->addTo($mail, $nombre);
 					$sendMail->setSubject($configSendmail->mail->asuntoConfirmation);
+					
 					$sendMail->send();
 				} catch (Exception $e) {																		//el email no se ha enviado
                     die('Error al intentar enviar un email:'.$e);																		
@@ -192,7 +194,7 @@ class Registracion_RegistracionController extends Zend_Controller_Action
     	Zend_Loader::loadClass('Zonas');
         $zonas = new Zonas();
         $where = 'idPadre= 0';
-		$order = 'nombre DESC';
+		$order = 'nombre ASC';
 		return $zonas->fetchAll($where, $order);
     }
 }
