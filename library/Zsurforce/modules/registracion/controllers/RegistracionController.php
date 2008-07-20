@@ -1,7 +1,8 @@
 <?php
-class Registracion_RegistracionController extends Zend_Controller_Action{
-
-    function init(){
+class Registracion_RegistracionController extends Zend_Controller_Action
+{
+    public function init()
+    {
     	/**
     	 * cargo el modelo de abstracción
     	 */
@@ -23,22 +24,21 @@ class Registracion_RegistracionController extends Zend_Controller_Action{
         $this->view->user 		= Zend_Auth::getInstance()->getIdentity();
         $this->view->title 		= $this->info->sitio->index->index->titulo;
         $this->view->scriptJs 	= 'prototypeValidate';
-        $this->view->opcionMenu = 'registracion';
-        
+        $this->view->opcionMenu = 'registracion';    
     }
-
-    function preDispatch(){
+    public function preDispatch()
+    {
         $auth = Zend_Auth::getInstance();
         if ($auth->hasIdentity()) {
             $this->view->usuarioLogueado = true;
         }
     }
-
-    function indexAction(){
+    public function indexAction()
+    {
         $this->_redirect('/registracion/registracion/add/');
     }
-
-    function addAction(){
+    public function addAction()
+    {
         if( $this->view->usuarioLogueado){
             $this->_redirect('/perfil/perfil/');
         }
@@ -128,8 +128,8 @@ class Registracion_RegistracionController extends Zend_Controller_Action{
 					$sendMail->addTo($mail, $nombre);
 					$sendMail->setSubject($configSendmail->mail->asuntoConfirmation);
 					$sendMail->send();
-				} catch (Exception $e) {
-																		//el email no se ha enviado
+				} catch (Exception $e) {																		//el email no se ha enviado
+                    die('Error al intentar enviar un email:'.$e);																		
 				}
                 														//fin de mail
                 $this->_redirect('/registracion/registracion/confirm');
@@ -159,8 +159,8 @@ class Registracion_RegistracionController extends Zend_Controller_Action{
         $this->view->scriptJs 					= "prototypeValidate";
         $this->render();
     }
-
-    function	confirmAction(){
+    public function	confirmAction()
+    {
 		if(isset($_GET['key_code'])){
 			Zend_Loader::loadClass('Confirmacion');
 			Zend_Loader::loadClass('Zend_Filter_StripTags');
@@ -187,7 +187,8 @@ class Registracion_RegistracionController extends Zend_Controller_Action{
      * 
      * @return arrar(array('id'=>'(n)', 'nombre'=>'mi name'), ....)
      */
-    function getRegion(){
+    public function getRegion()
+    {
     	Zend_Loader::loadClass('Zonas');
         $zonas = new Zonas();
         $where = 'idPadre= 0';
