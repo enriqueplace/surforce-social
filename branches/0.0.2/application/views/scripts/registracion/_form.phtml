@@ -47,8 +47,8 @@
     <td>
       <select name="gender" id="genero" class="input">
           <option value="">...</option>
-          <option <?php	if($this->escape($this->registracion->genero=='Hombre')){	echo 'selected="selected"';	} 	?> value="Hombre">Chico</option>
-        <option <?php	if($this->escape($this->registracion->genero=='Mujer')){ 	echo 'selected="selected"';	}	?> value="Mujer">Chica</option>
+          <option <?php	if($this->escape($this->registracion->genero=='Hombre')){	echo 'selected="selected"';	} 	?> value="Hombre">Hombre</option>
+        <option <?php if($this->escape($this->registracion->genero=='Mujer')){ 	echo 'selected="selected"';	}	?> value="Mujer">Mujer</option>
       </select>
     </td>
   </tr>
@@ -64,24 +64,24 @@
         </select>
     </td>
   </tr>
-
+<!-- 
   <tr>
     <td>Tu Estado:</td>
     <td>
         <select name="idEstado" id="idEstado" class="input">
             <option value="">...</option>
-            <option  <?php	if($this->escape($this->registracion->idEstado=='Adygeya')){ 	echo 'selected="selected"';	}	?>   value="Adygeya">Adygeya</option>
+            <option  <?php	if($this->escape($this->registracion->idEstado=='Adygeya')){ 	echo 'selected="selected"';	}	?>   value=""></option>
         </select>
        </td>
   </tr>
-
+ 
   <tr>
     <td>Tu Ciudad:</td>
     <td>
         <input name="ciudad" class="input" id="ciudad" size="40" maxlength="40" value="<?php echo $this->escape($this->registracion->ciudad);?>" type="text">
     </td>
   </tr>
-
+-->
   <tr>
     <td>Fecha de Nacimiento:</td>
     <td>
