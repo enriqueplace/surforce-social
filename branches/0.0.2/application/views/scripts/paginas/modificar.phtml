@@ -1,7 +1,4 @@
-<?php echo $this->render('header.phtml'); ?>
-<?php echo $this->render('menu.phtml'); ?>
 
-<div id="contenido">
 <h2><?php echo $this->escape($this->subtitle); ?></h2>
 
 <form action="<?php echo $this->baseUrl ?>/paginas/paginas/<?php echo $this->action; ?>" method="post">
@@ -22,6 +19,3 @@
     <input type="submit" name="add" value="<?php echo $this->escape($this->buttonText); ?>" />
   </div>
 </form>
-</div>
-
-<?php echo $this->render('footer.phtml'); ?>

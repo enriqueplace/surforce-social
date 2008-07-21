@@ -1,7 +1,4 @@
-<?php echo $this->render('header.phtml'); ?>
-<?php echo $this->render('menu.phtml'); ?>
 
-<div id="contenido">
 <h2><?php echo $this->escape($this->subtitle); ?></h2>
 <?php if ($this->faq) :?>
 
@@ -18,7 +15,3 @@
 <?php else: ?>
   <p>No se pudo encontrar la FAQ.</p>
 <?php endif;?>
-</div>
-
-
-<?php echo $this->render('footer.phtml'); ?>
