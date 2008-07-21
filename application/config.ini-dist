@@ -5,6 +5,9 @@ db.config.username = root
 db.config.password =
 db.config.dbname = surforce-social
 
+mail.admin = enriqueplace@gmail.com
+mail.asuntoConfirmacion = Registracion Social SURFORCE
+
 [personalizacion]
 ;sitio.controlador.accion.propiedad
 sitio.index.index.titulo = "SurForce Social"
