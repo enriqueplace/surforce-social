@@ -1,7 +1,3 @@
-<?php echo $this->render('header.phtml'); ?>
-<?php echo $this->render('menu.phtml'); ?>
-
-<div id="contenido">
 <h2><?php echo $this->escape($this->subtitle); ?></h2>
 
 <?php if ($this->usuarioLogueado): ?>
@@ -41,7 +37,3 @@
 <?php if ($this->usuarioLogueado): ?>
     <p><a href="<?php echo $this->baseUrl; ?>/usuarios/usuarios/agregar">Agregar Usuario</a></p>
 <?php endif; ?>
-
-</div>
-
-<?php echo $this->render('footer.phtml'); ?>

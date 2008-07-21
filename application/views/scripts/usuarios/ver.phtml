@@ -1,7 +1,4 @@
-<?php echo $this->render('header.phtml'); ?>
-<?php echo $this->render('menu.phtml'); ?>
 
-<div id="contenido">
     <h2><?php echo $this->escape($this->subtitle); ?></h2>
     <?php if ($this->usuarioLogueado): ?>
     <table>
@@ -48,6 +45,3 @@
         <label for="modificado">Modificado:&nbsp;</label>
         <?php echo $this->escape($this->usuario->modificado);?>
     </div>
-</div>
-
-<?php echo $this->render('footer.phtml'); ?>

@@ -1,7 +1,3 @@
-<?php echo $this->render('header.phtml'); ?>
-<?php echo $this->render('menu.phtml'); ?>
-
-<div id="contenido">
 <h2><?php echo $this->escape($this->subtitle); ?></h2>
 
   <?php if ($this->usuarioLogueado): ?>
@@ -18,7 +14,3 @@
   <div id="pagina-contenido">
     <?php echo $this->pagina->contenido;?>
   </div>
-
-</div>
-
-<?php echo $this->render('footer.phtml'); ?>
