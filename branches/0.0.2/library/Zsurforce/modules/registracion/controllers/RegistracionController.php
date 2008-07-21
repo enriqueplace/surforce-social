@@ -111,8 +111,13 @@ class Registracion_RegistracionController extends Zend_Controller_Action
                 $Confirmacion->insert($data);
                 /**
                  * enviando email con la clave de confirmacion
-                 * nota: comprobar el envío de email, en localhost me da error. De allí que tenga puesto con exepcion(try...catch)
+                 * nota: comprobar el envío de email, en 
+                 * localhost me da error. De allí que tenga 
+                 * puesto con excepcion(try...catch)
                  */
+                
+                
+                /* FIXME: Se comenta, el localhost no está funcionando, revisar
                 Zend_Loader::loadClass('Zend_Mail_Transport_Smtp');
                 Zend_Loader::loadClass('Zend_Mail');
                 
@@ -134,6 +139,15 @@ class Registracion_RegistracionController extends Zend_Controller_Action
                     die('Error al intentar enviar un email:'.$e);																		
 				}
                 														//fin de mail
+                */
+                
+                /*
+                 * Solución provisoria
+                 */
+                $configSendmail = Zend_Registry::get('config');
+                $cuerpo = 'Confirmación de registro de SURFORCE SOCIAL';
+                 mail($mail,$configSendmail->mail->asuntoConfirmation,$cuerpo,$configSendmail->mail->admin);
+                 
                 $this->_redirect('/registracion/registracion/confirm');
                 return;
             }else{
