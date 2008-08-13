@@ -1,6 +1,12 @@
 <?php
 class Autenticacion_AutenticacionController extends Zend_Controller_Action 
 {
+    function preDispatch(){
+        $auth = Zend_Auth::getInstance();
+        if ($auth->hasIdentity()) {
+            $this->view->usuarioLogueado = true;
+        }
+    }
     public function init()
     { 
         $this->initView();
@@ -8,6 +14,7 @@ class Autenticacion_AutenticacionController extends Zend_Controller_Action
         $this->view->setScriptPath('./application/views/scripts/');
         $this->view->opcionMenu = 'autenticacion';
     }
+    
     public function indexAction()
     {        
         $this->_redirect('/autenticacion/autenticacion/login');
@@ -19,6 +26,10 @@ class Autenticacion_AutenticacionController extends Zend_Controller_Action
     }
     public function loginAction()
     {
+        if( $this->view->usuarioLogueado){
+            $this->_redirect('/perfil/perfil/');
+        }
+        
         $info = Zend_Registry::get('personalizacion');
         
         $this->view->message 				= '';
