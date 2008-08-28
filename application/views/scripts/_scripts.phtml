@@ -74,4 +74,20 @@
 	<script src="<?php echo $this->baseUrl;?>/public/scripts/prototype/livevalidation_standalone.compressed.js" type="text/javascript"></script>
 <?php endif; ?>
 
+<?php if(strpos($this->scriptJs, 'mooTabs') !== false) :?>
+    <script>google.load("mootools", "1.11");</script>
+    <script src="<?php echo $this->baseUrl;?>/public/scripts/mootabs/mootabs1.2.js" type="text/javascript"></script>
+    <script type="text/javascript" charset="utf-8">
+      window.addEvent('domready', init);
+      function init() {
+      myTabs1 = new mootabs('container', {
+            width: '700px',
+            height: '250px',
+            duration: 1000,
+            activateOnLoad: 'first'
+      });
+      }
+</script>
+<?php endif; ?>
+
 <script src="<?php echo $this->baseUrl;?>/public/scripts/site.js" type="text/javascript"></script>
