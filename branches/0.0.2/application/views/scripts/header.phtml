@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="<?php echo $this->baseUrl;?>/public/styles/site.css" />
 	<link rel="stylesheet" type="text/css" media="screen" href="<?php echo $this->baseUrl;?>/public/scripts/mooRainbow/mooRainbow.css" />
 	<link rel="stylesheet" type="text/css" media="screen" href="<?php echo $this->baseUrl;?>/public/scripts/lightbox/lightbox.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="<?php echo $this->baseUrl;?>/public/styles/mootabs1.2.css" />
   </head>
   <body>
     <div id="contenedor">
@@ -14,7 +15,7 @@
 	        <h1>SURFORCE-SOCIAL</h1>
 	        
 	        <?php if( isset($this->user) ):?>	        
-	           <?php echo "usuario: ".$this->escape($this->user->usuario);?>
+	            Usuario: <a href="<?php echo $this->baseUrl;?>/autenticacion/autenticacion/logout"><?php echo $this->escape($this->user);?></a>
 	        <?php endif; ?>
 	        
 	       	<ul class="glossymenu">

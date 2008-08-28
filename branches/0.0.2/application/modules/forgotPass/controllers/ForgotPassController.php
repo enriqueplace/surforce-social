@@ -6,6 +6,7 @@ class ForgotPass_ForgotPassController extends Zend_Controller_Action {
         $this->view->baseUrl = $this->_request->getBaseUrl();
         $this->view->setScriptPath('./application/views/scripts/');
         $this->view->opcionMenu = 'forgotpass';
+        $this->view->user = Zend_Auth::getInstance()->getIdentity();
     }
     function preDispatch()
     {
