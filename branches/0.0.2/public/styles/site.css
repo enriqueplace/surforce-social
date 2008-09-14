@@ -359,3 +359,11 @@ p.matchFieldWithErrorReporting {
 	color: #fff;
 	background: url(images/menub_hover_right.gif) no-repeat right top; /*right tab image path*/
 }
+
+/* Resetea los valores de label`s creados con los formularios Zend_Dojo*/
+DL.zend_form dt label{
+  display: inherit ;
+  float:inherit;
+  text-align:inherit;
+  width:200px;
+}

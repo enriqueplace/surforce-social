@@ -1,115 +1,29 @@
+
+    <? // setup required dojo elements:
+       $this->dojo()->enable();
+       //->setDjConfigOption('parseOnLoad', true);
+    ?>
+
+
 <h2><?php echo $this->escape($this->subtitle); ?></h2>
 
-<form id="signup" name="signup" action="<?php echo $this->baseUrl;?>/perfil/perfil/editar" method="post" >
-
-    <div id="container">
-        <ul class="mootabs_title">
-            <li title="Tab1">Básico</li>
-            <li title="Tab2">Tu foto</li>
-            <li title="Tab3">Cambiar Password</li>
-        </ul>
-        <? echo $this->message ?>
-        <div id="Tab1" class="mootabs_panel">
-            
-            <div>
-                <label>Tu Correo Electr&oacute;nico </label>
-                <input name="mail" class="input" id="mail" value="<?php echo $this->escape($this->perfil->mail);?>" size="64" maxlength="64" type="text" />
-            </div>
-            <div>
-                <label>Tu Nombre:</label>
-                <input name="nombre" class="input" id="nombre" value="<?php echo $this->escape($this->perfil->nombre);?>" size="40" maxlength="40" type="text" />
-            </div>
-            <div>
-                <label>Apellido:</label>
-                <input name="apellido" class="input" id="nombre" value="<?php echo $this->escape($this->perfil->apellido);?>" size="40" maxlength="40" type="text" />
-            </div>
-            <div>
-                <label>Tu Sexo:</label>
-                <select name="gender" id="genero" class="input">
-                    <option value="">...</option>
-                    <option <?php    if($this->escape($this->perfil->genero=='Hombre')){    echo 'selected="selected"';    }     ?> value="Hombre">Hombre</option>
-                    <option <?php if($this->escape($this->perfil->genero=='Mujer')){     echo 'selected="selected"';    }    ?> value="Mujer">Mujer</option>
-                </select>
-            </div>
-            <div>
-                <label>Tu Pa&iacute;s:</label>
-                    <select id="idPais" name="idPais" class="input" >
-                        <option value="">...</option>
-                            <?php foreach ($this->zonas as $zona): ?>
-                            <option <?php    if($this->escape($this->perfil->idZona==$zona->idZona )){     echo 'selected="selected"';    }    ?> value="<?php echo $zona->idZona ?>"><?php echo $zona->nombre ?></option>
-                            <?php endforeach; ?>
-                            </select>
-                </div>
-
-  <div>
-    <label>Fecha de Nacimiento:</label>
+<?php 
+    // Contenedor para tabs
+    $this->tabContainer()->captureStart('tab', array(), array('style' => 'width:800px;height:500px;')); 
     
-        <select name="day" id="day" class="input">
-            <option value="">Dia</option>
-          <?php
-          for($i=1;$i<=31;$i++){
-              $day    =    ($i<10?"0$i":$i);
-            echo    "<option ";
-            if($this->escape($this->day==$day)){
-                echo 'selected="selected"';
-            }
-            echo "value=\"$day\">$day</option>\n";
-          }
-          ?>
-      </select>
+        // Primer tab "Básico"
+        $this->contentPane()->captureStart('pane1', array(), array('title' => 'Básico', 'style' => 'padding: 20px;'));
+            echo $this->basicoForm;
+        echo $this->contentPane()->captureEnd('pane1');
+           
+        // Segundo tab "Tu Foto"
+        $this->contentPane()->captureStart('pane2', array(), array('title' => 'Tu Foto'));
+            echo $this->contentPane()->captureEnd('pane2');
+        
+        // Segundo tab "Password"
+           $this->contentPane()->captureStart('pane3', array(), array('title' => 'Password', 'style' => 'padding: 20px;'));
+                echo $this->passwordForm;
+           echo $this->contentPane()->captureEnd('pane3');
 
-      <select name="month" id="month" class="input" >
-        <option value="">Mes</option>
-        <option <?php    if($this->escape($this->month=='01')){     echo 'selected="selected"';    }    ?> value="01">Enero</option>
-        <option <?php    if($this->escape($this->month=='02')){     echo 'selected="selected"';    }    ?> value="02">Febrero</option>
-        <option <?php    if($this->escape($this->month=='03')){     echo 'selected="selected"';    }    ?> value="03">Marzo</option>
-        <option <?php    if($this->escape($this->month=='04')){     echo 'selected="selected"';    }    ?> value="04">Abril</option>
-        <option <?php    if($this->escape($this->month=='05')){     echo 'selected="selected"';    }    ?> value="05">Mayo</option>
-        <option <?php    if($this->escape($this->month=='06')){     echo 'selected="selected"';    }    ?> value="06">Junio</option>
-        <option <?php    if($this->escape($this->month=='07')){     echo 'selected="selected"';    }    ?> value="07">Julio</option>
-        <option <?php    if($this->escape($this->month=='08')){     echo 'selected="selected"';    }    ?> value="08">Agosto</option>
-        <option <?php    if($this->escape($this->month=='09')){     echo 'selected="selected"';    }    ?> value="09">Setiembre</option>
-        <option <?php    if($this->escape($this->month=='10')){     echo 'selected="selected"';    }    ?> value="10">Octubre</option>
-        <option <?php    if($this->escape($this->month=='11')){     echo 'selected="selected"';    }    ?> value="11">Noviembre</option>
-        <option <?php    if($this->escape($this->month=='12')){     echo 'selected="selected"';    }    ?> value="12">Diciembre</option>
-      </select>
-
-      <select name="year" id="year" class="input">
-          <option value="">A&ntilde;o</option>
-          <?php
-          for($i=1928;$i<(date("Y")-5);$i++){
-            echo    "<option ";
-            if($this->escape($this->year==$i)){
-                echo 'selected="selected"';
-            }
-            echo "value=\"$i\">$i</option>\n";
-          }
-          ?>
-      </select></td>
-  </div>
-
-</div>
-        <div id="Tab2" class="mootabs_panel">
-            <input type="file" name="imagen" id="imagen" size="32" />
-        </div>
-        <div id="Tab3" class="mootabs_panel">
-            <div>
-                <label>Contrase&ntilde;a actual:</label>
-                <input name="password" class="input" id="password" value="" size="15" maxlength="32" type="password" />
-            </div>
-            <br>
-            <div>
-                <label>Nueva Contrase&ntilde;a:</label>
-                <input name="password2" class="input" id="password2" value="" size="15" maxlength="32" type="password" />
-            </div>
-            <div>
-                <label>Repite la nueva Contrase&ntilde;a:</label>
-                <input name="password3" class="input" id="password3" value="" size="15" maxlength="32" type="password" />
-            </div>
-        </div> 
-    </div>
-    
-    <br>
-    
-    <button >Editar</button>
-</form>
+    echo $this->tabContainer()->captureEnd('tab');   
+?>
