@@ -37,6 +37,8 @@ Zend_Layout::startMvc(array(
     'layoutPath' => $registry->get('base_path') . '/application/scripts'
 ));
 $view = Zend_Layout::getMvcInstance()->getView();
+$view->addHelperPath('Zend/Dojo/View/Helper/', 'Zend_Dojo_View_Helper');
+
 
 // setup database
 $db = Zend_Db::factory($config->db->adapter, $config->db->config->toArray());
@@ -62,6 +64,7 @@ $frontController->addModuleDirectory('./application/modules/');
 // añado pluggin para debugear
 $frontController->setRouter(new Zend_Controller_Router_Rewrite());
 $frontController->registerPlugin(new DebugPlugin());
+
 //añado modulo de registracion
 $frontController->addModuleDirectory('library/Zsurforce/modules');
 

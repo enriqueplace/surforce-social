@@ -1,24 +1,24 @@
 <script src="http://www.google.com/jsapi"></script>
 
-<?php if( $this->scriptJs == 'prototype' ) :?>
+<?php if(isset($this->scriptJs) && array_key_exists('prototype',$this->scriptJs) !== false) :?>
 	<script> google.load("prototype", "1.6");</script>
 <?php endif; ?>
 
-<?php if( $this->scriptJs == 'scriptaculous' ) :?>
+<?php if(isset($this->scriptJs) && array_key_exists('scriptaculous',$this->scriptJs) !== false ) :?>
 	<script>google.load("prototype", "1.6");</script>
 	<script>google.load("scriptaculous", "1.8.1");</script>
 <?php endif; ?>
 
-<?php if( $this->scriptJs == 'jquery' ) :?>
+<?php if(isset($this->scriptJs) && array_key_exists('jquery',$this->scriptJs) !== false) :?>
 	<script>google.load("jquery", "1.2.3");</script>
 <?php endif; ?>
 
-<?php if( $this->scriptJs == 'mootools' ) :?>
+<?php if(isset($this->scriptJs) && array_key_exists('mooTools',$this->scriptJs) !== false) :?>
 	<script>google.load("mootools", "1.11");</script>
 <?php endif; ?>
 
-<?php if( $this->scriptJs == 'mooRainbow' ) :?>
-	<script>google.load("mootools", "1.11");</script>
+<?php if(isset($this->scriptJs) && array_key_exists('mooRainbow',$this->scriptJs) !== false) :?>
+	
 	<script src="<?php echo $this->baseUrl;?>/public/scripts/mooRainbow/mooRainbow.js" type="text/javascript"></script>	
 	<script language="JavaScript" type="text/javascript">
 		window.addEvent('domready', function() {
@@ -55,12 +55,12 @@
 	</script>
 <?php endif; ?>  
 
-<?php if( $this->scriptJs == 'dojo' ) :?>
+<?php if(isset($this->scriptJs) && array_key_exists('dojo',$this->scriptJs) !== false) :?>
 	<script>google.load("dojo", "1.1.1");</script>
 <?php endif; ?>
 
-<?php if( $this->scriptJs == 'lightbox' ) :?>
-	<script>google.load("mootools", "1.11");</script>
+<?php if(isset($this->scriptJs) && array_key_exists('lighbox',$this->scriptJs) !== false ) :?>
+	
 	<script src="<?php echo $this->baseUrl;?>/public/scripts/lightbox/lightbox.js" type="text/javascript"></script>	
 	<script type="text/javascript">
 			window.addEvent('domready',function(){
@@ -70,11 +70,12 @@
 <?php endif; ?>
 
 
-<?php if(strpos($this->scriptJs, 'prototypeValidate') !== false) :?>
+<?php if(isset($this->scriptJs) && array_search('prototypeValidate',$this->scriptJs) !== false) :?>
 	<script src="<?php echo $this->baseUrl;?>/public/scripts/prototype/livevalidation_standalone.compressed.js" type="text/javascript"></script>
 <?php endif; ?>
 
-<?php if(strpos($this->scriptJs, 'mooTabs') !== false) :?>
+ 
+<?php if(isset($this->scriptJs) && array_search('mooTabs',$this->scriptJs) !== false) :?>
     <script>google.load("mootools", "1.11");</script>
     <script src="<?php echo $this->baseUrl;?>/public/scripts/mootabs/mootabs1.2.js" type="text/javascript"></script>
     <script type="text/javascript" charset="utf-8">

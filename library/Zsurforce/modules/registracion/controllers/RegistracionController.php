@@ -23,7 +23,8 @@ class Registracion_RegistracionController extends Zend_Controller_Action
         $this->view->baseUrl 	= $this->_request->getBaseUrl();
         $this->view->user 		= Zend_Auth::getInstance()->getIdentity();
         $this->view->title 		= $this->info->sitio->index->index->titulo;
-        $this->view->scriptJs 	= 'prototypeValidate';
+        $this->view->scriptJs = array();
+        $this->view->scriptJs['prototypeValidate'] = true;
         $this->view->opcionMenu = 'registracion';    
     }
     public function preDispatch()
@@ -172,7 +173,7 @@ class Registracion_RegistracionController extends Zend_Controller_Action
 		$this->view->registracion->year 		= $year;
         $this->view->action 					= $this->info->sitio->registracion->add->add;
         $this->view->buttonText 				= $this->info->sitio->registracion->add->buttonText;
-        $this->view->scriptJs 					= "prototypeValidate";
+        $this->view->scriptJs["prototypeValidate"] = true;
         $this->render();
     }
     public function	confirmAction()

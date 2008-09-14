@@ -13,6 +13,7 @@ class Autenticacion_AutenticacionController extends Zend_Controller_Action
         $this->view->baseUrl = $this->_request->getBaseUrl();
         $this->view->setScriptPath('./application/views/scripts/');
         $this->view->opcionMenu = 'autenticacion';
+        $this->view->scriptJs = array();
     }
     
     public function indexAction()
@@ -78,7 +79,7 @@ class Autenticacion_AutenticacionController extends Zend_Controller_Action
             }
         }
         $this->view->title 		= $info->sitio->autenticacion->login->titulo;
-        $this->view->scriptJs 	= "scriptaculous";
+        $this->view->scriptJs["scriptaculous"] = true;
         
         $this->render($tplJson);
     }

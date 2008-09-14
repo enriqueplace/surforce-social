@@ -2,13 +2,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <title><?php echo $this->escape($this->title); ?></title>    
-	<?php echo $this->render('_scripts.phtml'); ?>		    
+	<?php echo $this->render('_scripts.phtml'); ?>
+    <?php echo $this->headScript();?>
+    <?php if ( $this->dojo()->isEnabled() ):
+            $this->dojo()->setCdnBase( Zend_Dojo::CDN_BASE_GOOGLE )
+                     ->setCdnDojoPath( Zend_Dojo::CDN_DOJO_PATH_GOOGLE )
+                     ->addStyleSheetModule( 'dijit.themes.tundra' )
+                     ->useCdn();
+            echo $this->dojo() . "\n";
+       endif;
+    ?>    	    
     <link rel="stylesheet" type="text/css" media="screen" href="<?php echo $this->baseUrl;?>/public/styles/site.css" />
 	<link rel="stylesheet" type="text/css" media="screen" href="<?php echo $this->baseUrl;?>/public/scripts/mooRainbow/mooRainbow.css" />
 	<link rel="stylesheet" type="text/css" media="screen" href="<?php echo $this->baseUrl;?>/public/scripts/lightbox/lightbox.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="<?php echo $this->baseUrl;?>/public/styles/mootabs1.2.css" />
   </head>
-  <body>
+  <body class="tundra">
     <div id="contenedor">
 
 	    <div id="cabecera">
